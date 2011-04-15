@@ -1,0 +1,15 @@
+c:\users\ben\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\bin\WebApplication1.dll
+c:\users\ben\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+c:\users\ben\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\ResolveAssemblyReference.cache
+c:\users\ben\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+c:\users\ben\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Frank\Desktop\WebApplication1\WebApplication1\bin\WebApplication1.dll
+C:\Users\Frank\Desktop\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+C:\Users\Frank\Desktop\WebApplication1\WebApplication1\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Frank\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\Frank\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\SoftwareEngineeringII\WebApplication1\WebApplication1\bin\WebApplication1.dll
+C:\SoftwareEngineeringII\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+C:\SoftwareEngineeringII\WebApplication1\WebApplication1\obj\Debug\ResolveAssemblyReference.cache
+C:\SoftwareEngineeringII\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+C:\SoftwareEngineeringII\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
