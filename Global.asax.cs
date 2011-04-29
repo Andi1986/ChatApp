@@ -9,6 +9,7 @@ namespace WebApplication1
 {
     public class Global : System.Web.HttpApplication
     {
+        //sinnloser Kommentar um git zu testen
 
         void Application_Start(object sender, EventArgs e)
         {
