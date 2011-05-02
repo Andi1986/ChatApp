@@ -24,7 +24,6 @@ namespace WebApplication1
             chatters.Add(chatter);
             chatter.Join(Chat.ActiveChats()[0]);
             Application.Add("Chatters",chatters);
-            Chat.ActiveChats()[0].SendMessage("User " + chatter.Name + " has joined the Chat");
 
             Response.Redirect("Chat.aspx");
         }

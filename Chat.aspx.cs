@@ -9,8 +9,8 @@ namespace WebApplication1
 {
     public partial class _Chat : System.Web.UI.Page
     {
-        private Chat m_chat = Chat.ActiveChats()[0];
-        private Chatter m_chatter = null;
+        private Chat m_chat;
+        private Chatter m_chatter;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,11 +20,20 @@ namespace WebApplication1
                 guid = (Guid)Session["Guid"];
                 try { m_chatter = Chatter.ActiveChatters()[guid]; }
                 catch { Response.Redirect("Default.aspx"); }
+                m_chat = Chat.ActiveChats()[m_chatter.MainChat];
                 _UpdateChatterList();
                 _UpdateChatMessageList();
             }
             else
                 Response.Redirect("Default.aspx");
+        }
+
+        private void updateAll()
+        {
+            _UpdateChatterList();
+            _UpdateChatMessageList();
+            ChatUpdatePanel.Update();
+            NewMessageTextBox.Focus();
         }
 
         private void _UpdateChatterList()
@@ -39,11 +48,6 @@ namespace WebApplication1
 
             ChattersBulletedList.DataSource = chatters.DefaultIfEmpty("You're alone here!");
             ChattersBulletedList.DataBind();
-
-            /*
-            ChattersBulletedList.DataSource = m_chat.Chatters;
-            ChattersBulletedList.DataTextField = "Name";
-            ChattersBulletedList.DataBind();*/
         }
 
         private void _UpdateChatMessageList()
@@ -57,18 +61,16 @@ namespace WebApplication1
         {
             if (!string.IsNullOrEmpty(NewMessageTextBox.Text))
             {
-                string messageSent = m_chat.SendMessage(m_chatter, NewMessageTextBox.Text);
+                m_chatter.sendMessage(NewMessageTextBox.Text);
             }
             NewMessageTextBox.Text = "";
             TextBoxUpdatePanel.Update();
-            _UpdateChatterList();
-            _UpdateChatMessageList();
+            updateAll();
         }
 
         protected void LeaveButton_Click(object sender, EventArgs e)
         {
             List<Chatter> chatters = (List<Chatter>)Application.Get("Chatters");
-            Chat chat = Chat.ActiveChats()[0];
             Guid guid = (Guid)Session["Guid"];
             Chatter chatter = null;
             foreach (Chatter _chatter in chatters)
@@ -79,13 +81,24 @@ namespace WebApplication1
             if (chatter != null)
             {
                 chatters.Remove(chatter);
-                chatter.Leave(chat);
+                chatter.LeaveAll();
             }
             Application.Add("Chatters", chatters);
 
-            chat.SendMessage("User " + chatter.Name + " left the Chat Room");
-
             Response.Redirect("Default.aspx");
+        }
+
+        protected void ChatTextTimer_Tick(object sender, EventArgs e)
+        {
+            if(m_chat.newUpdates(m_chatter))
+                updateAll();
+        }
+
+        protected void ChangeButton_Click(object sender, EventArgs e)
+        {
+            m_chatter.changeRoom();
+            m_chat = Chat.ActiveChats()[m_chatter.MainChat];
+            updateAll();
         }
 
 

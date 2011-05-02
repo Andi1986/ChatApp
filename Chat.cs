@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Web;
@@ -19,12 +20,27 @@ public class Chat
         get { return m_messages; }
     }
 
+    private Dictionary<Chatter, bool> upToDate = new Dictionary<Chatter, bool>();
+
     private List<Chatter> m_chatters = new List<Chatter>();
+
+    public void join(Chatter chatter)
+    {
+        m_chatters.Add(chatter);
+        upToDate.Add(chatter, false);
+        resetUpToDate();
+    }
+
+    public void leave(Chatter chatter)
+    {
+        m_chatters.Remove(chatter);
+        upToDate.Remove(chatter);
+    }
 
     public List<Chatter> Chatters
     {
         get { return m_chatters; }
-        set { m_chatters = value; }
+        //set { m_chatters = value; }
     }
 
     public static ReadOnlyCollection<Chat> ActiveChats()
@@ -40,11 +56,12 @@ public class Chat
         }
     }
 
-    public string SendMessage(Chatter chatter, string message)
+    public string SendMessage(string name, string message)
     {
         string messageMask = "{0} @ {1} : {2}";
-        message = string.Format(messageMask, chatter.Name, DateTime.Now.ToString(), message);
+        message = string.Format(messageMask, name, DateTime.Now.ToString(), message);
         m_messages.Add(message);
+        resetUpToDate();
         return message;
     }
 
@@ -52,11 +69,30 @@ public class Chat
         string messageMask = "{0} : {1}";
         message = string.Format(messageMask, DateTime.Now.ToString(), message);
         m_messages.Add(message);
+        resetUpToDate();
         return message;
     }
 
     public Chat()
     {
         m_id = Guid.NewGuid();
+    }
+
+    private void resetUpToDate()
+    {
+        List<Chatter> chatters = new List<Chatter>();
+        foreach (Chatter chatter in upToDate.Keys)
+            chatters.Add(chatter);
+        foreach(Chatter chatter in chatters)
+            upToDate[chatter] = false;
+    }
+
+    public bool newUpdates(Chatter chatter)
+    {
+        bool noUpdate = false;
+        upToDate.TryGetValue(chatter, out noUpdate);
+        bool returnValue = !noUpdate;
+        upToDate[chatter] = true;
+        return returnValue;
     }
 }

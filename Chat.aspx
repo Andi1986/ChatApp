@@ -9,7 +9,7 @@
         Text="Chat Test"></asp:Label>
     <br />
     <br />
-    <asp:UpdatePanel ID="ChatUpdatePanel" runat="server" UpdateMode="Always">
+    <asp:UpdatePanel ID="ChatUpdatePanel" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             Buddys<br />
             <asp:BulletedList ID="ChattersBulletedList" runat="server" />
@@ -18,27 +18,21 @@
                 <asp:BulletedList runat="server" ID="ChatMessageList" />
             </div>
         </ContentTemplate>
-        <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="SendButton" EventName="Click" />
-            <asp:AsyncPostBackTrigger ControlID="ChatTextTimer" EventName="Tick" />
-        </Triggers>
     </asp:UpdatePanel>
-    Send Message<br />
-    <asp:UpdatePanel ID="TextBoxUpdatePanel" runat="server" 
+    Send Message<asp:Panel ID="Panel1" runat="server" DefaultButton="SendButton">
+        <asp:UpdatePanel ID="TextBoxUpdatePanel" runat="server" 
         UpdateMode="Conditional">
-        <ContentTemplate>
-            <asp:TextBox ID="NewMessageTextBox" Columns="50" runat="server" />
-            <asp:Button ID="SendButton" runat="server" EnableViewState="false" 
+            <ContentTemplate>
+                <asp:TextBox ID="NewMessageTextBox" Columns="50" runat="server" />
+                <asp:Button ID="SendButton" runat="server" EnableViewState="false" 
                 OnClick="SendButton_Click" Text="Send" />
-        </ContentTemplate>
-        <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="SendButton" EventName="Click" />
-        </Triggers>
-    </asp:UpdatePanel>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </asp:Panel>
+    <br />
     &nbsp;<asp:Button ID="LeaveButton" runat="server" onclick="LeaveButton_Click" 
         Text="Leave" />
-&nbsp;<asp:Timer runat="server" ID="ChatTextTimer" Interval="1000" />
-    <script type="text/javascript">
+&nbsp;<script type="text/javascript">
         function _SetChatTextScrollPosition() {
             var chatText = document.getElementById("ChatText");
             chatText.scrollTop = chatText.scrollHeight;
@@ -48,5 +42,13 @@
         window.onload = function () {
             _SetChatTextScrollPosition();
         }
-    </script>
+    </script><asp:Button ID="ChangeButton" runat="server" 
+        onclick="ChangeButton_Click" Text="Change Room" />
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <asp:Timer ID="ChatTextTimer" runat="server" Interval="1000" 
+                ontick="ChatTextTimer_Tick" />
+        </ContentTemplate>
+    </asp:UpdatePanel>
+&nbsp;
 </asp:Content>

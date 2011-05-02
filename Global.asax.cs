@@ -26,6 +26,7 @@ namespace WebApplication1
 
             List<Chat> chats = new List<Chat>();
             chats.Add(new Chat());
+            chats.Add(new Chat());
             Application.Add("Chats", chats);
 
             /*
