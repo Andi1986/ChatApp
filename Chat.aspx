@@ -11,11 +11,20 @@
     <br />
     <asp:UpdatePanel ID="ChatUpdatePanel" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            Buddys<br />
-            <asp:BulletedList ID="ChattersBulletedList" runat="server" />
+            Buddys&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:DropDownList ID="ddlAllBuddys" runat="server">
+            </asp:DropDownList>
+&nbsp;
+            <asp:Button ID="NewChatButton" runat="server" onclick="NewChatButton_Click" 
+                Text="Open new Chat" />
+            <br />
+            <div id="Buddys" style="width: 640px; height: 73px; overflow: auto;">
+                <asp:BulletedList ID="ChattersBulletedList" runat="server" />
+            </div>
             Chat Text<br />
             <div id="ChatText" style="width: 640px; height: 240px; overflow: auto;">
                 <asp:BulletedList runat="server" ID="ChatMessageList" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
@@ -26,12 +35,18 @@
                 <asp:TextBox ID="NewMessageTextBox" Columns="50" runat="server" />
                 <asp:Button ID="SendButton" runat="server" EnableViewState="false" 
                 OnClick="SendButton_Click" Text="Send" />
+                &nbsp;
+                <asp:Button ID="ChangeButton" runat="server" onclick="ChangeButton_Click" 
+                    Text="Change Room" />
+                &nbsp;
+                <asp:Button ID="LeaveButton" runat="server" onclick="LeaveButton_Click" 
+                    Text="Leave Room" />
             </ContentTemplate>
         </asp:UpdatePanel>
     </asp:Panel>
     <br />
-    &nbsp;<asp:Button ID="LeaveButton" runat="server" onclick="LeaveButton_Click" 
-        Text="Leave" />
+    &nbsp;<asp:Button ID="LogoutButton" runat="server" onclick="LogoutButton_Click" 
+        Text="Logout" />
 &nbsp;<script type="text/javascript">
         function _SetChatTextScrollPosition() {
             var chatText = document.getElementById("ChatText");
@@ -42,9 +57,7 @@
         window.onload = function () {
             _SetChatTextScrollPosition();
         }
-    </script><asp:Button ID="ChangeButton" runat="server" 
-        onclick="ChangeButton_Click" Text="Change Room" />
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    </script><asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:Timer ID="ChatTextTimer" runat="server" Interval="1000" 
                 ontick="ChatTextTimer_Tick" />

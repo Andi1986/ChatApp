@@ -35,6 +35,8 @@ public class Chat
     {
         m_chatters.Remove(chatter);
         upToDate.Remove(chatter);
+        if (m_chatters.Count == 0)
+            Chat.removeChat(this);
     }
 
     public List<Chatter> Chatters
@@ -53,6 +55,28 @@ public class Chat
         else
         {
             return new ReadOnlyCollection<Chat>(new List<Chat>());
+        }
+    }
+
+    public static Chat getNewChat()
+    {
+        lock (typeof(Chat))
+        {
+            Chat chat = new Chat();
+            List<Chat> chats = ((List<Chat>)HttpContext.Current.Application["Chats"]);
+            chats.Add(chat);
+            HttpContext.Current.Application["Chats"] = chats;
+            return chat;
+        }
+    }
+
+    public static void removeChat(Chat chat)
+    {
+        lock (typeof(Chat))
+        {
+            List<Chat> chats = ((List<Chat>)HttpContext.Current.Application["Chats"]);
+            chats.Remove(chat);
+            HttpContext.Current.Application["Chats"] = chats;
         }
     }
 

@@ -39,9 +39,9 @@ public class Chatter
     private List<Chatter> myBuddies = new List<Chatter>();
     private int mainChat;
 
-    public int MainChat
+    public Chat MainChat
     {
-        get { return mainChat; }
+        get { return myChats[mainChat]; }
     }
 
     public Chatter(Guid id, string name)
@@ -60,9 +60,13 @@ public class Chatter
 
     public void Leave(Chat chat)
     {
-        chat.leave(this);
-        myChats.Remove(chat);
-        chat.SendMessage("User " + m_name + " left the Chat Room");
+        if (!chat.Equals(myChats[0]))
+        {
+            chat.leave(this);
+            myChats.Remove(chat);
+            chat.SendMessage("User " + m_name + " left the Chat Room");
+        }
+        mainChat = 0;
     }
 
     public void LeaveAll()
@@ -71,26 +75,42 @@ public class Chatter
         foreach (Chat chat in myChats)
             chats.Add(chat);
         foreach (Chat chat in chats)
-            Leave(chat);
-
+        {
+            chat.leave(this);
+            myChats.Remove(chat);
+            chat.SendMessage("User " + m_name + " left the Chat Room");
+        }
     }
 
     public void sendMessage(string msg)
     {
-        Chat.ActiveChats()[mainChat].SendMessage(m_name, msg);
+        myChats[mainChat].SendMessage(m_name, msg);
+    }
+
+    public void createNewChatWith(string nickName)
+    {
+        List<Chatter> allChatters = new List<Chatter>();
+        Chatter searchedChatter = null;
+        foreach (Chatter chatter in Chatter.ActiveChatters().Values)
+            allChatters.Add(chatter);
+        foreach(Chatter chatter in allChatters)
+            if(chatter.Name.Equals(nickName))
+                searchedChatter = chatter;
+        if (searchedChatter != null)
+        {
+            Chat chat = Chat.getNewChat();
+            Join(chat);
+            searchedChatter.Join(chat);
+            mainChat = myChats.Count - 1;
+        }
     }
 
     public void changeRoom()
     {
-        Chat oldChat = Chat.ActiveChats()[mainChat];
-        Leave(oldChat);
         mainChat++;
-        if (mainChat >= Chat.ActiveChats().Count)
+        if (mainChat >= myChats.Count)
             mainChat = 0;
-        Chat newChat = Chat.ActiveChats()[mainChat];
-        if (!myChats.Contains(newChat))
-            Join(newChat);
-
+        Chat newChat = myChats[mainChat];
     }
 
 

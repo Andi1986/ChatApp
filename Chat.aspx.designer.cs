@@ -40,6 +40,24 @@ namespace WebApplication1 {
         protected global::System.Web.UI.UpdatePanel ChatUpdatePanel;
         
         /// <summary>
+        /// ddlAllBuddys-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAllBuddys;
+        
+        /// <summary>
+        /// NewChatButton-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button NewChatButton;
+        
+        /// <summary>
         /// ChattersBulletedList-Steuerelement
         /// </summary>
         /// <remarks>
@@ -94,6 +112,15 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Button SendButton;
         
         /// <summary>
+        /// ChangeButton-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ChangeButton;
+        
+        /// <summary>
         /// LeaveButton-Steuerelement
         /// </summary>
         /// <remarks>
@@ -103,13 +130,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Button LeaveButton;
         
         /// <summary>
-        /// ChangeButton-Steuerelement
+        /// LogoutButton-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ChangeButton;
+        protected global::System.Web.UI.WebControls.Button LogoutButton;
         
         /// <summary>
         /// UpdatePanel1-Steuerelement
