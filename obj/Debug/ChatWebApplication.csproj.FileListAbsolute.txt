@@ -18,3 +18,8 @@ C:\Dokumente und Einstellungen\botto\Eigene Dateien\My Dropbox\Workspace\Andi198
 C:\Dokumente und Einstellungen\botto\Eigene Dateien\My Dropbox\Workspace\Andi1986-ChatApp-0a2bb1a\obj\Debug\ResolveAssemblyReference.cache
 C:\Dokumente und Einstellungen\botto\Eigene Dateien\My Dropbox\Workspace\Andi1986-ChatApp-0a2bb1a\obj\Debug\WebApplication1.dll
 C:\Dokumente und Einstellungen\botto\Eigene Dateien\My Dropbox\Workspace\Andi1986-ChatApp-0a2bb1a\obj\Debug\WebApplication1.pdb
+C:\Dokumente und Einstellungen\botto\Eigene Dateien\My Dropbox\Workspace\ChatApp\bin\WebApplication1.dll
+C:\Dokumente und Einstellungen\botto\Eigene Dateien\My Dropbox\Workspace\ChatApp\bin\WebApplication1.pdb
+C:\Dokumente und Einstellungen\botto\Eigene Dateien\My Dropbox\Workspace\ChatApp\obj\Debug\ResolveAssemblyReference.cache
+C:\Dokumente und Einstellungen\botto\Eigene Dateien\My Dropbox\Workspace\ChatApp\obj\Debug\WebApplication1.dll
+C:\Dokumente und Einstellungen\botto\Eigene Dateien\My Dropbox\Workspace\ChatApp\obj\Debug\WebApplication1.pdb

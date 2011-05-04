@@ -120,8 +120,9 @@ namespace WebApplication1 {
             }
         }
 
-        public static void FriendUsers(int userID1, int userID2) {
+        public static bool FriendUsers(int userID1, int userID2) {
             OleDbConnection conn = null;
+            bool ret = true;
             try {
 
                 List<Record> recordList = ReadUserRecords();
@@ -135,7 +136,7 @@ namespace WebApplication1 {
                 }
 
                 if (!(found1 && found2))
-                    return;
+                    return false;
 
                 conn = new OleDbConnection(connectionString);
                 conn.Open();
@@ -148,10 +149,11 @@ namespace WebApplication1 {
                 cmd = new OleDbCommand(sql, conn);
                 cmd.ExecuteNonQuery();
             } catch (Exception e) {
-
+                ret = false;
             } finally {
                 if (conn != null) conn.Close();
             }
+            return ret;
         }
 
         public static String MakeSQLInsertQuery(String table, String[] columns, String[] values) {

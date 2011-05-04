@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 
 
-public class Chatter {
+public class Chatter : IComparable {
     private Guid m_id;
     public Guid Id {
         get { return m_id; }
@@ -29,7 +29,7 @@ public class Chatter {
         return retval;
     }
 
-    private List<Chat> myChats = new List<Chat>();
+    public List<Chat> myChats = new List<Chat>();
     public List<Chatter> myBuddies = new List<Chatter>();
     public List<int> buddyList { get; set; }
 
@@ -48,14 +48,14 @@ public class Chatter {
     public void Join(Chat chat) {
         chat.join(this);
         myChats.Add(chat);
-        chat.SendMessage("User " + m_name + " has joined the Chat");
+        chat.SendMessage("User [b]" + m_name + "[/b] has joined the Chat");
     }
 
     public void Leave(Chat chat) {
         if (!chat.Equals(myChats[0])) {
             chat.leave(this);
             myChats.Remove(chat);
-            chat.SendMessage("User " + m_name + " left the Chat Room");
+            chat.SendMessage("User [b]" + m_name + "[/b] left the Chat Room");
         }
         mainChat = 0;
     }
@@ -67,7 +67,7 @@ public class Chatter {
         foreach (Chat chat in chats) {
             chat.leave(this);
             myChats.Remove(chat);
-            chat.SendMessage("User " + m_name + " left the Chat Room");
+            chat.SendMessage("User [b]" + m_name + "[/b] left the Chat Room");
         }
     }
 
@@ -75,18 +75,23 @@ public class Chatter {
         myChats[mainChat].SendMessage(m_name, msg);
     }
 
-    public void createNewChatWith(string nickName) {
+    public void createNewChatWith(string[] nickNames) {
         List<Chatter> allChatters = new List<Chatter>();
-        Chatter searchedChatter = null;
+        List<Chatter> searchedChatters = new List<Chatter>();
         foreach (Chatter chatter in Chatter.ActiveChatters().Values)
             allChatters.Add(chatter);
-        foreach (Chatter chatter in allChatters)
-            if (chatter.Name.Equals(nickName))
-                searchedChatter = chatter;
-        if (searchedChatter != null) {
+        foreach (string nickName in nickNames) {
+            foreach (Chatter chatter in allChatters)
+                if (chatter.Name.Equals(nickName))
+                    searchedChatters.Add(chatter);
+        }
+
+        if (searchedChatters.Count > 0) {
             Chat chat = Chat.getNewChat();
             Join(chat);
-            searchedChatter.Join(chat);
+            foreach (Chatter searchedChatter in searchedChatters) {
+                searchedChatter.Join(chat);
+            }
             mainChat = myChats.Count - 1;
         }
     }
@@ -98,9 +103,14 @@ public class Chatter {
         Chat newChat = myChats[mainChat];
     }
 
+    public void changeRoom(int index)
+    {
+        mainChat = index;
+        Chat newChat = myChats[mainChat];
+    }
 
-
-
-
-
+    public int CompareTo(object obj) {
+        Chatter o = (Chatter)obj;
+        return (Name + Id.ToString()).CompareTo(o.Name + o.Id.ToString());
+    }
 }

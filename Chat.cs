@@ -61,8 +61,7 @@ public class Chat {
     public static void removeChat(Chat chat) {
         lock (typeof(Chat)) {
             List<Chat> chats = ((List<Chat>)HttpContext.Current.Application["Chats"]);
-            if (!chat.Equals(chats[0]))
-            {
+            if (!chat.Equals(chats[0])) {
                 chats.Remove(chat);
                 HttpContext.Current.Application["Chats"] = chats;
             }
@@ -70,10 +69,10 @@ public class Chat {
     }
 
     public string SendMessage(string name, string message) {
-        string messageMask = "{0} @ {1} : {2}";
+        string messageMask = "[{0}] {1} : {2}";
         message.Replace("<", "-");
         message.Replace(">", "-");
-        message = string.Format(messageMask, name, DateTime.Now.ToString(), message);
+        message = string.Format(messageMask, DateTime.Now.ToString("t"), name, message);
         m_messages.Add(message);
         resetUpToDate();
         return message;
@@ -82,6 +81,7 @@ public class Chat {
     public string SendMessage(String message) {
         string messageMask = "{0} : {1}";
         message = string.Format(messageMask, DateTime.Now.ToString(), message);
+        message = "[i]" + message + "[/i]";
         m_messages.Add(message);
         resetUpToDate();
         return message;
@@ -105,5 +105,19 @@ public class Chat {
         bool returnValue = !noUpdate;
         upToDate[chatter] = true;
         return returnValue;
+    }
+
+    public override string ToString() {
+        String tmp = "";
+        for (int i = 0; i < Chatters.Count; i++) {
+            tmp += Chatters[i].Name;
+            if (i < Chatters.Count - 1)
+                tmp += ", ";
+        }
+        if (String.IsNullOrWhiteSpace(tmp))
+            return "Empty Chat";
+
+        return tmp;
+
     }
 }

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Startseite" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Chat.aspx.cs" Inherits="WebApplication1._Chat" %>
-<%@ Register TagPrefix="WebApplication1" Namespace="WebApplication1" assembly="WebApplication1"%>
 
+<%@ Register TagPrefix="WebApplication1" Namespace="WebApplication1" Assembly="WebApplication1" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style type="text/css">
         #BuddyList
@@ -9,6 +9,13 @@
             width: 224px;
         }
     </style>
+    <script language="javascript">
+        function OpenChild() {
+            var t = window.prompt("Name of friend you want to add:", "");
+            document.getElementById('<%= FriendRequestId.ClientID %>').value = t;
+            document.forms['form1'].submit();
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
@@ -39,13 +46,19 @@
     Send Message<asp:Panel ID="Panel1" runat="server" DefaultButton="SendButton">
         <asp:UpdatePanel ID="TextBoxUpdatePanel" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
-                <asp:TextBox ID="NewMessageTextBox" Columns="50" runat="server"/>
+                <asp:TextBox ID="NewMessageTextBox" Columns="50" runat="server" />
                 <asp:Button ID="SendButton" runat="server" EnableViewState="false" OnClick="SendButton_Click"
                     Text="Send" />
+                &nbsp;
+                <asp:DropDownList ID="ChatRoomList" runat="server">
+                </asp:DropDownList>
                 &nbsp;
                 <asp:Button ID="ChangeButton" runat="server" OnClick="ChangeButton_Click" Text="Change Room" />
                 &nbsp;
                 <asp:Button ID="LeaveButton" runat="server" OnClick="LeaveButton_Click" Text="Leave Room" />
+                &nbsp;
+                <asp:Button ID="FriendUserButton" runat="server" Text="Friend User" OnClientClick="javascript:OpenChild()" />
+                <asp:HiddenField ID="FriendRequestId" runat="server" />
             </ContentTemplate>
         </asp:UpdatePanel>
     </asp:Panel>

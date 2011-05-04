@@ -112,6 +112,15 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Button SendButton;
         
         /// <summary>
+        /// ChatRoomList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ChatRoomList;
+        
+        /// <summary>
         /// ChangeButton control.
         /// </summary>
         /// <remarks>
@@ -128,6 +137,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button LeaveButton;
+        
+        /// <summary>
+        /// FriendUserButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button FriendUserButton;
+        
+        /// <summary>
+        /// FriendRequestId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField FriendRequestId;
         
         /// <summary>
         /// LogoutButton control.
