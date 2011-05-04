@@ -61,8 +61,11 @@ public class Chat {
     public static void removeChat(Chat chat) {
         lock (typeof(Chat)) {
             List<Chat> chats = ((List<Chat>)HttpContext.Current.Application["Chats"]);
-            chats.Remove(chat);
-            HttpContext.Current.Application["Chats"] = chats;
+            if (!chat.Equals(chats[0]))
+            {
+                chats.Remove(chat);
+                HttpContext.Current.Application["Chats"] = chats;
+            }
         }
     }
 

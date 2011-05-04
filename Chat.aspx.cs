@@ -58,8 +58,8 @@ namespace WebApplication1 {
         private void _UpdateAllChatter() {
             List<string> chatters = new List<string>();
             foreach (Chatter chatter in Chatter.ActiveChatters().Values) {
-                // if (!chatter.Name.Equals(m_chatter.Name))
-                //     chatters.Add(chatter.Name);
+                 //if (!chatter.Name.Equals(m_chatter.Name))
+                 //    chatters.Add(chatter.Name);
                 if (!chatter.Name.Equals(m_chatter.Name)) {
                     if (m_chatter.buddyList.Contains(chatter.intId)) {
                         chatters.Add(chatter.Name);
