@@ -46,9 +46,11 @@ public class Chatter : IComparable {
     }
 
     public void Join(Chat chat) {
-        chat.join(this);
-        myChats.Add(chat);
-        chat.SendMessage("User [b]" + m_name + "[/b] has joined the Chat");
+        if (!myChats.Contains(chat)) {
+            chat.join(this);
+            myChats.Add(chat);
+            chat.SendMessage("User [b]" + m_name + "[/b] has joined the Chat");
+        }
     }
 
     public void Leave(Chat chat) {
@@ -120,6 +122,19 @@ public class Chatter : IComparable {
                 searchedChatter.Join(chat);
             }
             mainChat = myChats.Count - 1;
+        }
+    }
+
+    public void inviteToChat(string nickName) {
+        List<Chatter> allChatters = new List<Chatter>();
+        Chatter searchedChatter = null;
+        foreach (Chatter chatter in Chatter.ActiveChatters().Values)
+            allChatters.Add(chatter);
+        foreach (Chatter chatter in allChatters)
+            if (chatter.Name.Equals(nickName))
+                searchedChatter = chatter;
+        if (searchedChatter != null) {
+            searchedChatter.Join(MainChat);
         }
     }
 

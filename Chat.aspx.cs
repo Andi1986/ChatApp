@@ -103,10 +103,7 @@ namespace WebApplication1 {
                 }*/
             }
 
-            if (chatters.Count < 1)
-                NewChatButton.Enabled = false;
-            else
-                NewChatButton.Enabled = true;
+
 
             ChattersBulletedList.DataSource = chatters.DefaultIfEmpty("You're alone here!");
             ChattersBulletedList.DataBind();
@@ -118,6 +115,7 @@ namespace WebApplication1 {
             foreach (Chatter chatter in Chatter.ActiveChatters().Values) {
                 //if (!chatter.Name.Equals(m_chatter.Name))
                 //    chatters.Add(chatter.Name);
+
                 if (!chatter.Name.Equals(m_chatter.Name)) {
                     if (m_chatter.buddyList.Contains(chatter.intId)) {
                         chatters.Add(chatter.Name);
@@ -125,6 +123,17 @@ namespace WebApplication1 {
                             m_chatter.myBuddies.Add(chatter);
                     }
                 }
+            }
+
+            if (chatters.Count < 1)
+            {
+                NewChatButton.Enabled = false;
+                InviteButton.Enabled = false;
+            }
+            else
+            {
+                NewChatButton.Enabled = true;
+                InviteButton.Enabled = true;
             }
 
             ddlAllBuddys.DataSource = chatters;
@@ -211,6 +220,13 @@ namespace WebApplication1 {
             updateAll();
         }
 
+        protected void InviteButton_Click(object sender, EventArgs e)
+        {
+            string nickName = ddlAllBuddys.SelectedValue;
+            if(!nickName.Equals(""))
+                m_chatter.inviteToChat(nickName);
+        }
+
         protected void LeaveButton_Click(object sender, EventArgs e) {
             m_chatter.Leave(m_chat);
             updateAll();
@@ -225,6 +241,8 @@ namespace WebApplication1 {
             }
             return values.ToArray();
         }
+
+
 
 
     }

@@ -31,6 +31,9 @@
                 </asp:CheckBoxList>
                 &nbsp;
                 <asp:Button ID="NewChatButton" runat="server" OnClick="NewChatButton_Click" Text="Open new Chat" />
+                &nbsp;
+                <asp:Button ID="InviteButton" runat="server" onclick="InviteButton_Click" 
+                    Text="Invite to Chat" />
             </div>
             In this Room:<br />
             <div id="Buddys" style="width: 640px; height: 73px; overflow: auto;">
