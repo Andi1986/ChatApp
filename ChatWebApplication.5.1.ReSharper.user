@@ -10,51 +10,51 @@
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
       <Item value="TextBox2" priority="0" />
-      <Item value="String`0" priority="9" />
+      <Item value="String`0" priority="15" />
       <Item value="user" priority="0" />
-      <Item value="return" priority="8" />
-      <Item value="Record`0" priority="2" />
+      <Item value="return" priority="15" />
+      <Item value="Record`0" priority="4" />
       <Item value="Site.Master" priority="0" />
       <Item value="_columnEmail" priority="0" />
-      <Item value="if" priority="8" />
+      <Item value="if" priority="19" />
       <Item value="Response" priority="2" />
       <Item value="UsernameBox" priority="0" />
       <Item value="EmailBox" priority="0" />
       <Item value="PasswordBox1" priority="0" />
       <Item value="PasswordBox2" priority="0" />
       <Item value="username" priority="2" />
-      <Item value="false" priority="4" />
-      <Item value="true" priority="3" />
+      <Item value="false" priority="6" />
+      <Item value="true" priority="5" />
       <Item value="ErrorLabel" priority="4" />
       <Item value="pw1" priority="1" />
       <Item value="pw2" priority="0" />
-      <Item value="public" priority="4" />
+      <Item value="public" priority="5" />
       <Item value="static" priority="4" />
       <Item value="AppDomainInitializer`0" priority="0" />
-      <Item value="private" priority="1" />
+      <Item value="private" priority="4" />
       <Item value="initialized" priority="1" />
-      <Item value="DBConnectionHelper`0" priority="14" />
+      <Item value="DBConnectionHelper`0" priority="18" />
       <Item value="this" priority="0" />
-      <Item value="List" priority="1" />
-      <Item value="foreach" priority="2" />
-      <Item value="record" priority="2" />
+      <Item value="List" priority="3" />
+      <Item value="foreach" priority="10" />
+      <Item value="record" priority="4" />
       <Item value="email" priority="0" />
-      <Item value="userRecord" priority="7" />
+      <Item value="userRecord" priority="10" />
       <Item value="password" priority="0" />
-      <Item value="null" priority="1" />
-      <Item value="Request" priority="0" />
+      <Item value="null" priority="2" />
+      <Item value="Request" priority="1" />
       <Item value="ErrorLabelUpdatePanel" priority="1" />
       <Item value="FormsAuthentication`0" priority="0" />
       <Item value="string" priority="1" />
       <Item value="Thread`0" priority="2" />
       <Item value="Timer" priority="1" />
-      <Item value="new" priority="1" />
+      <Item value="new" priority="2" />
       <Item value="redirectTimer" priority="2" />
       <Item value="redirectTimer_Elapsed`0" priority="0" />
       <Item value="TaskTimer`0" priority="1" />
       <Item value="sender" priority="0" />
       <Item value="Guid" priority="0" />
-      <Item value="int" priority="1" />
+      <Item value="int" priority="8" />
       <Item value="UserControl`0" priority="0" />
       <Item value="_columnGuid" priority="1" />
       <Item value="Guid`0" priority="0" />
@@ -62,8 +62,8 @@
       <Item value="catch" priority="0" />
       <Item value="ArgumentOutOfRangeException`0" priority="0" />
       <Item value="chats" priority="0" />
-      <Item value="Chat`0" priority="0" />
-      <Item value="tmp" priority="0" />
+      <Item value="Chat`0" priority="2" />
+      <Item value="tmp" priority="4" />
       <Item value="_tableBuddy" priority="0" />
       <Item value="_columnBuddyUser" priority="1" />
       <Item value="id" priority="0" />
@@ -73,40 +73,85 @@
       <Item value="rendered" priority="5" />
       <Item value="sw" priority="0" />
       <Item value="BulletedList`0" priority="0" />
-      <Item value="message" priority="0" />
+      <Item value="message" priority="2" />
       <Item value="sb" priority="1" />
       <Item value="Regex`0" priority="1" />
       <Item value="Match`0" priority="0" />
       <Item value="while" priority="0" />
       <Item value="m" priority="4" />
       <Item value="line" priority="0" />
+      <Item value="IComparable`0" priority="0" />
+      <Item value="Name" priority="0" />
+      <Item value="Id" priority="0" />
+      <Item value="Chatter`0" priority="1" />
+      <Item value="obj" priority="0" />
+      <Item value="CheckboxListSelections`0" priority="0" />
+      <Item value="ddlAllBuddys" priority="0" />
+      <Item value="List&lt;Chatter&gt;" priority="0" />
+      <Item value="nickName" priority="0" />
+      <Item value="FriendUserButton" priority="1" />
+      <Item value="object" priority="0" />
+      <Item value="d" priority="0" />
+      <Item value="ctx" priority="0" />
+      <Item value="FriendRequestId" priority="0" />
+      <Item value="m_chatter" priority="12" />
+      <Item value="n" priority="4" />
+      <Item value="break" priority="1" />
+      <Item value="User" priority="0" />
+      <Item value="buddyList" priority="0" />
+      <Item value="friendId" priority="3" />
+      <Item value="bool" priority="1" />
+      <Item value="ret" priority="1" />
+      <Item value="chatter" priority="3" />
+      <Item value="prevHiddenValue" priority="3" />
+      <Item value="m_chat" priority="0" />
+      <Item value="else" priority="2" />
+      <Item value="Session" priority="0" />
+      <Item value="updateAll`0" priority="1" />
+      <Item value="WelcomeLabel" priority="0" />
+      <Item value="void" priority="0" />
+      <Item value="index" priority="0" />
+      <Item value="ChatMessageList" priority="1" />
+      <Item value="override" priority="0" />
+      <Item value="for" priority="0" />
+      <Item value="i" priority="4" />
+      <Item value="Chatters" priority="2" />
+      <Item value="ListItem" priority="0" />
+      <Item value="chat" priority="0" />
+      <Item value="ChatRoomList" priority="2" />
+      <Item value="currentChatId" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.UI.WebControls.TextBox">
       <Item value="Text" priority="4" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.String">
-      <Item value="IsNullOrWhiteSpace`0" priority="1" />
+      <Item value="IsNullOrWhiteSpace`0" priority="2" />
+      <Item value="IsNullOrEmpty`0" priority="1" />
+      <Item value="Format`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.HttpResponse">
       <Item value="Redirect`0" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.UI.WebControls.Label">
-      <Item value="Text" priority="1" />
+      <Item value="Text" priority="2" />
       <Item value="Visible" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@WebApplication1.DBConnectionHelper">
       <Item value="Init`0" priority="1" />
-      <Item value="ReadUserRecords`0" priority="0" />
-      <Item value="_columnName" priority="2" />
+      <Item value="ReadUserRecords`0" priority="1" />
+      <Item value="_columnName" priority="3" />
       <Item value="_columnEmail" priority="1" />
       <Item value="_columPasword" priority="0" />
       <Item value="_columnGuid" priority="2" />
+      <Item value="ReadBuddiesFromUser`0" priority="0" />
+      <Item value="FriendUsers`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:WebApplication1.Record">
-      <Item value="Entries" priority="7" />
+      <Item value="Entries" priority="9" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.HttpRequest">
       <Item value="RawUrl" priority="0" />
+      <Item value="Form" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.UI.UpdatePanel">
       <Item value="Update`0" priority="1" />
@@ -129,20 +174,24 @@
     </ItemStatistics>
     <ItemStatistics item="JetBrains.ReSharper.Feature.Services.Asp.CodeCompletion.AspBasicCodeCompletionContext">
       <Item value="&amp;nbsp;" priority="0" />
+      <Item value="&amp;quot;" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.String">
       <Item value="ToString`0" priority="0" />
       <Item value="Replace`0" priority="3" />
+      <Item value="CompareTo`0" priority="0" />
+      <Item value="ToLower`0" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Convert">
-      <Item value="ToInt32`0" priority="3" />
+      <Item value="ToInt32`0" priority="4" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Guid">
       <Item value="NewGuid`0" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
-      <Item value="Count" priority="0" />
-      <Item value="Add`0" priority="0" />
+      <Item value="Count" priority="5" />
+      <Item value="Add`0" priority="5" />
+      <Item value="Contains`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Text.StringBuilder">
       <Item value="ToString`0" priority="4" />
@@ -159,58 +208,102 @@
     <ItemStatistics item="Qualified:System.Text.RegularExpressions.Group">
       <Item value="ToString`0" priority="0" />
     </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Guid">
+      <Item value="ToString`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.UI.WebControls.Button">
+      <Item value="Attributes" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.UI.AttributeCollection">
+      <Item value="Add`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.UI.WebControls.HiddenField">
+      <Item value="Value" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Chatter">
+      <Item value="intId" priority="3" />
+      <Item value="buddyList" priority="1" />
+      <Item value="myBuddies" priority="1" />
+      <Item value="Name" priority="1" />
+      <Item value="myChats" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.Dictionary`2">
+      <Item value="Values" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Object">
+      <Item value="ToString`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:WebApplication1.RichTextBulletedList">
+      <Item value="Items" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.UI.WebControls.ListItemCollection">
+      <Item value="Clear`0" priority="0" />
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Chat">
+      <Item value="ToString`0" priority="0" />
+      <Item value="Id" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Chat">
+      <Item value="ActiveChats`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.UI.WebControls.DropDownList">
+      <Item value="SelectedIndex" priority="1" />
+      <Item value="Items" priority="0" />
+    </ItemStatistics>
   </CompletionStatisticsManager>
   <RecentFiles>
     <RecentFiles>
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.designer.cs" caret="5813" fromTop="158" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.designer.cs" caret="6840" fromTop="158" />
       <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Default.aspx.designer.cs" caret="2782" fromTop="13" />
       <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/d:Account/f:Register.aspx" caret="949" fromTop="14" />
       <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Register.aspx.designer.cs" caret="3459" fromTop="16" />
       <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/d:Account/f:Register.aspx.cs" caret="257" fromTop="10" />
       <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Register.aspx" caret="0" fromTop="0" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:DBConnectionHelper.cs" caret="3471" fromTop="16" />
       <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Web.config" caret="451" fromTop="13" />
       <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Site.Master" caret="113" fromTop="0" />
       <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:RichTextBulletedList.cs" caret="1086" fromTop="20" />
       <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Default.aspx" caret="0" fromTop="0" />
       <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Register.aspx.cs" caret="2832" fromTop="13" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.cs" caret="0" fromTop="0" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chatter.cs" caret="2352" fromTop="27" />
       <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Default.aspx.cs" caret="2897" fromTop="19" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="1982" fromTop="18" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="4517" fromTop="22" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:About.aspx" caret="186" fromTop="3" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:DBConnectionHelper.cs" caret="1958" fromTop="20" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="3402" fromTop="23" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.cs" caret="3546" fromTop="15" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chatter.cs" caret="806" fromTop="17" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="6678" fromTop="8" />
     </RecentFiles>
     <RecentEdits>
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Default.aspx.cs" caret="2779" fromTop="25" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:DBConnectionHelper.cs" caret="3627" fromTop="12" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:DBConnectionHelper.cs" caret="4219" fromTop="34" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:DBConnectionHelper.cs" caret="3629" fromTop="16" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Default.aspx.cs" caret="2633" fromTop="23" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:DBConnectionHelper.cs" caret="3801" fromTop="23" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:RichTextBulletedList.cs" caret="1506" fromTop="30" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="2882" fromTop="19" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="2882" fromTop="29" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:RichTextBulletedList.cs" caret="1505" fromTop="15" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="2882" fromTop="4" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="2882" fromTop="16" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.cs" caret="2166" fromTop="23" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Site.Master" caret="113" fromTop="0" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="3994" fromTop="29" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="3994" fromTop="27" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="4174" fromTop="35" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="3994" fromTop="26" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="3994" fromTop="21" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="562" fromTop="13" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="159" fromTop="0" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="2882" fromTop="23" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:RichTextBulletedList.cs" caret="455" fromTop="9" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:RichTextBulletedList.cs" caret="634" fromTop="20" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:RichTextBulletedList.cs" caret="1449" fromTop="28" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:RichTextBulletedList.cs" caret="592" fromTop="11" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:RichTextBulletedList.cs" caret="1045" fromTop="18" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:RichTextBulletedList.cs" caret="1011" fromTop="18" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Register.aspx.cs" caret="2832" fromTop="13" />
-      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Default.aspx.cs" caret="2546" fromTop="14" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="5672" fromTop="22" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="5672" fromTop="22" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="405" fromTop="15" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="5672" fromTop="15" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="5672" fromTop="10" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="5672" fromTop="22" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.cs" caret="3667" fromTop="21" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chatter.cs" caret="1600" fromTop="19" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chatter.cs" caret="1367" fromTop="12" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chatter.cs" caret="1975" fromTop="31" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.cs" caret="3667" fromTop="23" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="4863" fromTop="23" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx" caret="3402" fromTop="23" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="5672" fromTop="6" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="5672" fromTop="21" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chatter.cs" caret="3231" fromTop="31" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chatter.cs" caret="3181" fromTop="28" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chatter.cs" caret="851" fromTop="21" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.cs" caret="3667" fromTop="19" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.cs" caret="3667" fromTop="17" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.cs" caret="3546" fromTop="15" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="3265" fromTop="21" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="810" fromTop="21" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="5672" fromTop="13" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="5672" fromTop="25" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="5200" fromTop="13" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="335" fromTop="11" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="7581" fromTop="31" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="7285" fromTop="22" />
+      <File id="FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59/f:Chat.aspx.cs" caret="5729" fromTop="6" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>

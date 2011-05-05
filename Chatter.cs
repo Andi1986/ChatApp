@@ -33,7 +33,7 @@ public class Chatter : IComparable {
     public List<Chatter> myBuddies = new List<Chatter>();
     public List<int> buddyList { get; set; }
 
-    private int mainChat;
+    public int mainChat;
 
     public Chat MainChat {
         get { return myChats[mainChat]; }
@@ -86,8 +86,35 @@ public class Chatter : IComparable {
                     searchedChatters.Add(chatter);
         }
 
+        Chat chat = null;
         if (searchedChatters.Count > 0) {
-            Chat chat = Chat.getNewChat();
+            chat = Chat.getNewChat();
+            String messageMask = "User [b]{0}[/b] created a new Chatroom with {1}";
+            String chatUsers = "";
+            for (int i = 0; i < searchedChatters.Count; i++) {
+                chatUsers += searchedChatters[i].Name;
+                if (i < searchedChatters.Count - 1)
+                    chatUsers += ", ";
+            }
+            chat.SendMessageTo(
+                         String.Format(messageMask, Name,
+                                      chatUsers), intId);
+            foreach (Chatter searchedChatter in searchedChatters) {
+                chat.SendMessageTo(
+                          String.Format(messageMask, Name,
+                                       chatUsers), searchedChatter.intId);
+
+                for (int i = 0; i < searchedChatter.myChats.Count; i++) {
+                    searchedChatter.myChats[i].SendMessageTo(
+                          String.Format(messageMask, Name,
+                                       chatUsers), searchedChatter.intId);
+                }
+            }
+
+        }
+
+        if (searchedChatters.Count > 0) {
+
             Join(chat);
             foreach (Chatter searchedChatter in searchedChatters) {
                 searchedChatter.Join(chat);
@@ -103,8 +130,7 @@ public class Chatter : IComparable {
         Chat newChat = myChats[mainChat];
     }
 
-    public void changeRoom(int index)
-    {
+    public void changeRoom(int index) {
         mainChat = index;
         Chat newChat = myChats[mainChat];
     }

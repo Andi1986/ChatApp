@@ -9,7 +9,9 @@ namespace WebApplication1 {
     public partial class _Chat : System.Web.UI.Page {
         private Chat m_chat;
         private Chatter m_chatter;
-        private int currentChatId = 0;
+        private int currChatroomIndex = 0;
+
+        private static object m_lock = new object();
 
         protected void Page_Load(object sender, EventArgs e) {
 
@@ -18,10 +20,18 @@ namespace WebApplication1 {
                 guid = (Guid)Session["Guid"];
                 try { m_chatter = Chatter.ActiveChatters()[guid]; } catch { Response.Redirect("Default.aspx"); }
                 m_chat = m_chatter.MainChat;
+
+                if (Session["currChatroomIndex"] != null)
+                    currChatroomIndex = Convert.ToInt32(Session["currChatroomIndex"]);
+
                 _UpdateChatterList();
                 _UpdateChatMessageList();
                 _UpdateChatRooms();
                 WelcomeLabel.Text = "Hallo " + m_chatter.Name;
+                if (m_chatter.mainChat == 0)
+                    ChatRoomNameLabel.Text = "[0] Main Chatroom";
+                else
+                    ChatRoomNameLabel.Text = String.Format("[{0}] {1}", m_chatter.mainChat, m_chat);
             } else {
                 Response.Redirect("Default.aspx");
                 return;
@@ -122,21 +132,28 @@ namespace WebApplication1 {
         }
 
         private void _UpdateChatRooms() {
-            ChatRoomList.Items.Clear();
+            if (ChatRoomList.Items.Count != m_chatter.myChats.Count) {
+                ChatRoomList.Items.Clear();
 
-            int i = 0;
-            foreach (Chat chat in m_chatter.myChats) {
-                if (i == 0)
-                    ChatRoomList.Items.Add(new ListItem("[0] Main Chatroom", chat.Id.ToString()));
-                else
-                    ChatRoomList.Items.Add(new ListItem(String.Format("[{0}] {1}", i, chat), chat.Id.ToString()));
-                i++;
+                int i = 0;
+                foreach (Chat chat in m_chatter.myChats) {
+                    if (i == 0)
+                        ChatRoomList.Items.Add(new ListItem("[0] Main Chatroom", chat.Id.ToString()));
+                    else
+                        ChatRoomList.Items.Add(new ListItem(String.Format("[{0}] {1}", i, chat), chat.Id.ToString()));
+                    i++;
+                }
+                lock (m_lock) {
+                    Session["IgnoreChatroomChange"] = true;
+                    ChatRoomList.SelectedIndex = m_chatter.mainChat;
+                    TextBoxUpdatePanel.Update();
+                }
             }
-            ChatRoomList.SelectedIndex = currentChatId;
+
         }
 
         private void _UpdateChatMessageList() {
-            ChatMessageList.DataSource = m_chat.Messages;
+            ChatMessageList.DataSource = m_chat.GetMyMessages(m_chatter.intId);
             ChatMessageList.DataBind();
         }
 
@@ -173,17 +190,24 @@ namespace WebApplication1 {
         }
 
         protected void ChangeButton_Click(object sender, EventArgs e) {
-            int i = ChatRoomList.SelectedIndex;
-            m_chatter.changeRoom(i);
+            m_chatter.changeRoom(currChatroomIndex >= 0 ? currChatroomIndex : 0);
             m_chat = m_chatter.MainChat;
-            currentChatId = i;
             updateAll();
+        }
+
+        protected void ChatRoomList_SelectedIndexChanged(object sender, EventArgs e) {
+            lock (m_lock) {
+                if (Convert.ToBoolean(Session["IgnoreChatroomChange"])) {
+                    Session["IgnoreChatroomChange"] = false;
+                    return;
+                }
+            }
+            Session["currChatroomIndex"] = ChatRoomList.SelectedIndex;
         }
 
         protected void NewChatButton_Click(object sender, EventArgs e) {
             string[] nickNames = CheckboxListSelections(ddlAllBuddys);
             m_chatter.createNewChatWith(nickNames);
-            currentChatId = m_chatter.myChats.Count - 1;
             updateAll();
         }
 

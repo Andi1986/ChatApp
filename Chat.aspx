@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Startseite" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Chat.aspx.cs" Inherits="WebApplication1._Chat" %>
+    CodeBehind="Chat.aspx.cs" Inherits="WebApplication1._Chat" EnableViewState="True" %>
 
 <%@ Register TagPrefix="WebApplication1" Namespace="WebApplication1" Assembly="WebApplication1" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -36,7 +36,8 @@
             <div id="Buddys" style="width: 640px; height: 73px; overflow: auto;">
                 <asp:BulletedList ID="ChattersBulletedList" runat="server" />
             </div>
-            Chat Text<br />
+            <asp:Label ID="ChatRoomNameLabel" runat="server" Text="Label"></asp:Label>
+            <br />
             <div id="ChatText" style="width: 640px; height: 240px; overflow: auto;">
                 <WebApplication1:RichTextBulletedList DisplayMode="Text" runat="server" ID="ChatMessageList" />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -50,7 +51,7 @@
                 <asp:Button ID="SendButton" runat="server" EnableViewState="false" OnClick="SendButton_Click"
                     Text="Send" />
                 &nbsp;
-                <asp:DropDownList ID="ChatRoomList" runat="server">
+                <asp:DropDownList ID="ChatRoomList" runat="server" AutoPostBack="False" OnSelectedIndexChanged="ChatRoomList_SelectedIndexChanged">
                 </asp:DropDownList>
                 &nbsp;
                 <asp:Button ID="ChangeButton" runat="server" OnClick="ChangeButton_Click" Text="Change Room" />

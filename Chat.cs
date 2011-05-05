@@ -11,10 +11,27 @@ public class Chat {
         get { return m_id; }
     }
 
-    private List<string> m_messages = new List<string>();
+    public struct ChatMessageLine {
+        public String Message;
+        public int id;
+    }
 
-    public List<string> Messages {
+    private List<ChatMessageLine> m_messages = new List<ChatMessageLine>();
+
+    public List<ChatMessageLine> AllMessages {
         get { return m_messages; }
+    }
+
+    public List<String> GetMyMessages(int id) {
+        List<String> customList = new List<String>();
+        lock (typeof(Chat)) {
+            for (int i = 0; i < AllMessages.Count; i++) {
+                ChatMessageLine line = AllMessages[i];
+                if (line.id == -1 || line.id == id)
+                    customList.Add(line.Message);
+            }
+        }
+        return customList;
     }
 
     private Dictionary<Chatter, bool> upToDate = new Dictionary<Chatter, bool>();
@@ -73,7 +90,9 @@ public class Chat {
         message.Replace("<", "-");
         message.Replace(">", "-");
         message = string.Format(messageMask, DateTime.Now.ToString("t"), name, message);
-        m_messages.Add(message);
+        lock (typeof(Chat)) {
+            m_messages.Add(new ChatMessageLine { id = -1, Message = message });
+        }
         resetUpToDate();
         return message;
     }
@@ -82,7 +101,34 @@ public class Chat {
         string messageMask = "{0} : {1}";
         message = string.Format(messageMask, DateTime.Now.ToString(), message);
         message = "[i]" + message + "[/i]";
-        m_messages.Add(message);
+        lock (typeof(Chat)) {
+            m_messages.Add(new ChatMessageLine { id = -1, Message = message });
+        }
+        resetUpToDate();
+        return message;
+    }
+
+    public string SendMessageTo(String message, int id)
+    {
+        string messageMask = "{0} : {1}";
+        message = string.Format(messageMask, DateTime.Now.ToString(), message);
+        message = "[i]" + message + "[/i]";
+        lock (typeof(Chat)) {
+            m_messages.Add(new ChatMessageLine { id = id, Message = message });
+        }
+        resetUpToDate();
+        return message;
+    }
+
+    public string SendMessageTo(String name, String message, int id)
+    {
+        string messageMask = "[{0}] Whisper from {1} : {2}";
+        message.Replace("<", "-");
+        message.Replace(">", "-");
+        message = string.Format(messageMask, DateTime.Now.ToString("t"), name, message);
+        lock (typeof(Chat)) {
+            m_messages.Add(new ChatMessageLine { id = id, Message = message });
+        }
         resetUpToDate();
         return message;
     }
