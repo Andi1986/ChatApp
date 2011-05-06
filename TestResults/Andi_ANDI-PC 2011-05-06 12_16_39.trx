@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="9932039b-730d-4daa-a27c-7e5c7c1100dc" name="Andi@ANDI-PC 2011-05-06 12:16:39" runUser="Andi-PC\Andi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Lokal" id="fd9e591c-9f7d-45aa-a6fd-fb980fe16c94">
+    <Description>Dies sind die standardmäßigen Testeinstellungen für einen lokalen Testlauf.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Andi_ANDI-PC 2011-05-06 12_16_39" />
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-05-06T12:16:39.9320000+02:00" queuing="2011-05-06T12:16:39.9710000+02:00" start="2011-05-06T12:16:39.9870000+02:00" finish="2011-05-06T12:16:40.6760000+02:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestMethod1" storage="c:\softwareengineeringii\chatapp\chatapp\program.cs\bin\debug\program.cs.dll" id="ae421501-4441-0115-e09f-e483174c46bd">
+      <Execution id="8d65cb3b-5a86-4eb6-98dd-e92c9ca4084b" />
+      <TestMethod codeBase="C:/SoftwareEngineeringII/chatApp/ChatApp/Program.cs/bin/Debug/Program.cs.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Program.cs.UnitTest1, Program.cs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestMethod1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Nicht in einer Liste enthaltene Ergebnisse" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="ae421501-4441-0115-e09f-e483174c46bd" executionId="8d65cb3b-5a86-4eb6-98dd-e92c9ca4084b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="8d65cb3b-5a86-4eb6-98dd-e92c9ca4084b" testId="ae421501-4441-0115-e09f-e483174c46bd" testName="TestMethod1" computerName="ANDI-PC" duration="00:00:00.2112235" startTime="2011-05-06T12:16:40.0550000+02:00" endTime="2011-05-06T12:16:40.6310000+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8d65cb3b-5a86-4eb6-98dd-e92c9ca4084b">
+      <Output>
+        <ErrorInfo>
+          <Message>Fehler bei "Assert.AreEqual". Erwartet:&lt;1&gt;. Tatsächlich:&lt;2&gt;. </Message>
+          <StackTrace>   bei Program.cs.UnitTest1.TestMethod1() in C:\SoftwareEngineeringII\chatApp\ChatApp\Program.cs\UnitTest1.cs:Zeile 15.
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

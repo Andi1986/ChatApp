@@ -28,3 +28,8 @@ D:\Dropbox\Workspace\ChatApp\bin\WebApplication1.pdb
 D:\Dropbox\Workspace\ChatApp\obj\Debug\ResolveAssemblyReference.cache
 D:\Dropbox\Workspace\ChatApp\obj\Debug\WebApplication1.dll
 D:\Dropbox\Workspace\ChatApp\obj\Debug\WebApplication1.pdb
+C:\SoftwareEngineeringII\chatApp\ChatApp\bin\WebApplication1.dll
+C:\SoftwareEngineeringII\chatApp\ChatApp\bin\WebApplication1.pdb
+C:\SoftwareEngineeringII\chatApp\ChatApp\obj\Debug\ResolveAssemblyReference.cache
+C:\SoftwareEngineeringII\chatApp\ChatApp\obj\Debug\WebApplication1.dll
+C:\SoftwareEngineeringII\chatApp\ChatApp\obj\Debug\WebApplication1.pdb

@@ -1,0 +1,9 @@
+C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\bin\Debug\Tests.dll
+C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\bin\Debug\Tests.pdb
+C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\bin\Debug\WebApplication1.dll
+C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\bin\Debug\WebApplication1.pdb
+C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\bin\Debug\WebApplication1_Accessor.dll
+C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\bin\Debug\WebApplication1_Accessor.pdb
+C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\obj\Debug\Tests.dll
+C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\obj\Debug\Tests.pdb

@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatWebApplication", "ChatWebApplication.csproj", "{FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{CD9AA57F-B902-4800-BF67-6B4CEF39A6C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F209FB38-4B8A-44A8-8F77-50995DC285BD}"
+	ProjectSection(SolutionItems) = preProject
+		ChatWebApplication1.vsmdi = ChatWebApplication1.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ChatWebApplication1.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -13,6 +25,10 @@ Global
 		{FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB77A1EB-BF80-43A1-BB41-0E9A9DE26E59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD9AA57F-B902-4800-BF67-6B4CEF39A6C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD9AA57F-B902-4800-BF67-6B4CEF39A6C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD9AA57F-B902-4800-BF67-6B4CEF39A6C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD9AA57F-B902-4800-BF67-6B4CEF39A6C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
