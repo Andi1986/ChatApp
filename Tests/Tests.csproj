@@ -60,8 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChatterTest.cs" />
+    <Compile Include="Chatter_offlineTest.cs" />
     <Compile Include="ChatTest.cs" />
+    <Compile Include="Chat_offlineTest.cs" />
     <Compile Include="DBConnectionHelperTest.cs" />
+    <Compile Include="DBConnectionHelper_offlineTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
