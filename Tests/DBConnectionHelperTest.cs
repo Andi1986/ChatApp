@@ -4,18 +4,16 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
 using System.Collections.Generic;
 
-namespace Tests
-{
-    
-    
+namespace Tests {
+
+
     /// <summary>
     ///Dies ist eine Testklasse für "DBConnectionHelperTest" und soll
     ///alle DBConnectionHelperTest Komponententests enthalten.
     ///</summary>
     [TestClass()]
-    public class DBConnectionHelperTest
-    {
-
+    public class DBConnectionHelperTest {
+        public const string AspNetDevelopmentServerHost = @"D:\Dropbox\Workspace\ChatApp";
 
         private TestContext testContextInstance;
 
@@ -23,14 +21,11 @@ namespace Tests
         ///Ruft den Testkontext auf, der Informationen
         ///über und Funktionalität für den aktuellen Testlauf bietet, oder legt diesen fest.
         ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
+        public TestContext TestContext {
+            get {
                 return testContextInstance;
             }
-            set
-            {
+            set {
                 testContextInstance = value;
             }
         }
@@ -74,10 +69,9 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(AspNetDevelopmentServerHost, "/")]
         [UrlToTest("http://localhost:51655/")]
-        public void ExecuteNonQueryTest()
-        {
+        public void ExecuteNonQueryTest() {
             string sql = string.Empty; // TODO: Passenden Wert initialisieren
             DBConnectionHelper.ExecuteNonQuery(sql);
             Assert.Inconclusive("Eine Methode, die keinen Wert zurückgibt, kann nicht überprüft werden.");
@@ -91,10 +85,9 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(AspNetDevelopmentServerHost, "/")]
         [UrlToTest("http://localhost:51655/")]
-        public void FriendUsersTest()
-        {
+        public void FriendUsersTest() {
             int userID1 = 0; // TODO: Passenden Wert initialisieren
             int userID2 = 0; // TODO: Passenden Wert initialisieren
             bool expected = false; // TODO: Passenden Wert initialisieren
@@ -112,13 +105,19 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(AspNetDevelopmentServerHost, "/")]
         [UrlToTest("http://localhost:51655/")]
-        public void InitTest()
-        {
+        public void InitTest() {
             string dbPath = string.Empty; // TODO: Passenden Wert initialisieren
             DBConnectionHelper.Init(dbPath);
-            Assert.Inconclusive("Eine Methode, die keinen Wert zurückgibt, kann nicht überprüft werden.");
+            Assert.IsFalse(String.IsNullOrEmpty(DBConnectionHelper._columnBuddyBuddy), "_columnBuddyBuddy is null or empty. config was not read");
+            Assert.IsFalse(String.IsNullOrEmpty(DBConnectionHelper._columnBuddyUser), "_columnBuddyUser is null or empty. config was not read");
+            Assert.IsFalse(String.IsNullOrEmpty(DBConnectionHelper._columnEmail), "_columnEmail is null or empty. config was not read");
+            Assert.IsFalse(String.IsNullOrEmpty(DBConnectionHelper._columnGuid), "_columnGuid is null or empty. config was not read");
+            Assert.IsFalse(String.IsNullOrEmpty(DBConnectionHelper._columnName), "_columnName is null or empty. config was not read");
+            Assert.IsFalse(String.IsNullOrEmpty(DBConnectionHelper._columPasword), "_columPasword is null or empty. config was not read");
+            Assert.IsFalse(String.IsNullOrEmpty(DBConnectionHelper._tableBuddy), "_tableBuddy is null or empty. config was not read");
+            Assert.IsFalse(String.IsNullOrEmpty(DBConnectionHelper._tableUser), "_tableUser is null or empty. config was not read");
         }
 
         /// <summary>
@@ -129,18 +128,22 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(AspNetDevelopmentServerHost, "/")]
         [UrlToTest("http://localhost:51655/")]
-        public void MakeSQLInsertQueryTest()
-        {
-            string table = string.Empty; // TODO: Passenden Wert initialisieren
-            string[] columns = null; // TODO: Passenden Wert initialisieren
-            string[] values = null; // TODO: Passenden Wert initialisieren
-            string expected = string.Empty; // TODO: Passenden Wert initialisieren
+        public void MakeSQLInsertQueryTest() {
+            string table = "TUsers";
+            string[] columns = { "Name", "Password", "Email" };
+            string[] values = { "Testname", "Testpassword", "Testemail" };
+            string expected = "INSERT INTO TUsers (Name, Password, Email) VALUES ('Testname', 'Testpassword', 'Testemail')";
             string actual;
             actual = DBConnectionHelper.MakeSQLInsertQuery(table, columns, values);
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Überprüfen Sie die Richtigkeit dieser Testmethode.");
+            table = "TUsers";
+            columns = new string[] { "Name" };
+            values = new string[] { "Testname" };
+            expected = "INSERT INTO TUsers (Name) VALUES ('Testname')";
+            actual = DBConnectionHelper.MakeSQLInsertQuery(table, columns, values);
+            Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
@@ -151,10 +154,9 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(AspNetDevelopmentServerHost, "/")]
         [UrlToTest("http://localhost:51655/")]
-        public void ReadBuddiesFromUserTest()
-        {
+        public void ReadBuddiesFromUserTest() {
             int id = 0; // TODO: Passenden Wert initialisieren
             List<int> expected = null; // TODO: Passenden Wert initialisieren
             List<int> actual;
@@ -171,10 +173,9 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(AspNetDevelopmentServerHost, "/")]
         [UrlToTest("http://localhost:51655/")]
-        public void ReadUserRecordsTest()
-        {
+        public void ReadUserRecordsTest() {
             List<Record> expected = null; // TODO: Passenden Wert initialisieren
             List<Record> actual;
             actual = DBConnectionHelper.ReadUserRecords();
