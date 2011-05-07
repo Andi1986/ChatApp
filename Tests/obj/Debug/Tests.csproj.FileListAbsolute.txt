@@ -7,3 +7,12 @@ C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\bin\Debug\WebApplication1_Accesso
 C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\obj\Debug\ResolveAssemblyReference.cache
 C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\obj\Debug\Tests.dll
 C:\SoftwareEngineeringII\chatApp\ChatApp\Tests\obj\Debug\Tests.pdb
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\Tests\bin\Debug\Tests.dll
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\Tests\bin\Debug\Tests.pdb
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\Tests\bin\Debug\WebApplication1.dll
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\Tests\bin\Debug\WebApplication1.pdb
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\Tests\bin\Debug\WebApplication1_Accessor.dll
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\Tests\bin\Debug\WebApplication1_Accessor.pdb
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\Tests\obj\Debug\Tests.dll
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\Tests\obj\Debug\Tests.pdb

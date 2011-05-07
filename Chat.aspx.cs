@@ -86,6 +86,7 @@ namespace WebApplication1 {
 
             ChatUpdatePanel.Update();
             NewMessageTextBox.Focus();
+            m_chat.iAmUpToDate(m_chatter.intId);
         }
 
         // People in Chatroom
@@ -194,7 +195,7 @@ namespace WebApplication1 {
         }
 
         protected void ChatTextTimer_Tick(object sender, EventArgs e) {
-            if (m_chat.newUpdates(m_chatter))
+            if (m_chat.newUpdates(m_chatter.intId))
                 updateAll();
         }
 
