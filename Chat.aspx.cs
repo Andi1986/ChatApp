@@ -85,8 +85,8 @@ namespace WebApplication1 {
             _UpdateChatRooms();
 
             ChatUpdatePanel.Update();
-            NewMessageTextBox.Focus();
             m_chat.iAmUpToDate(m_chatter.intId);
+            NewMessageTextBox.Focus();
         }
 
         // People in Chatroom
