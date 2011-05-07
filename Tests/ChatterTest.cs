@@ -73,7 +73,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void ChatterConstructorTest()
         {
@@ -91,7 +91,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void ActiveChattersTest()
         {
@@ -110,7 +110,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void CompareToTest()
         {
@@ -133,7 +133,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void JoinTest()
         {
@@ -153,7 +153,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void LeaveTest()
         {
@@ -173,7 +173,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void LeaveAllTest()
         {
@@ -192,7 +192,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void changeRoomTest()
         {
@@ -211,7 +211,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void changeRoomTest1()
         {
@@ -231,7 +231,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void createNewChatWithTest()
         {
@@ -251,7 +251,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void inviteToChatTest()
         {
@@ -271,7 +271,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void sendMessageTest()
         {
@@ -291,7 +291,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void IdTest()
         {
@@ -311,7 +311,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void MainChatTest()
         {
@@ -331,7 +331,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void NameTest()
         {
@@ -351,7 +351,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void buddyListTest()
         {
@@ -374,7 +374,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void emailTest()
         {
@@ -397,7 +397,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void intIdTest()
         {

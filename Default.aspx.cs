@@ -80,6 +80,17 @@ namespace WebApplication1 {
             CONT:
                 continue;
             }
+
+            List<Chatter> doubleChatters = new List<Chatter>();
+            foreach(Chatter loggedInChatter in chatters)
+                if (loggedInChatter.intId.Equals(chatter.intId))
+                    doubleChatters.Add(loggedInChatter);
+            foreach (Chatter c in doubleChatters)
+            {
+                chatters.Remove(c);
+                c.LeaveAll();
+            }
+
             chatters.Add(chatter);
             try {
                 //TODO: throws exception after logging in and leaving for 2 times... 

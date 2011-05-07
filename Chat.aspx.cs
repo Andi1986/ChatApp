@@ -85,6 +85,7 @@ namespace WebApplication1 {
             _UpdateChatRooms();
 
             ChatUpdatePanel.Update();
+            m_chat.iAmUpToDate(m_chatter.intId);
             NewMessageTextBox.Focus();
         }
 
@@ -194,7 +195,7 @@ namespace WebApplication1 {
         }
 
         protected void ChatTextTimer_Tick(object sender, EventArgs e) {
-            if (m_chat.newUpdates(m_chatter))
+            if (m_chat.newUpdates(m_chatter.intId))
                 updateAll();
         }
 

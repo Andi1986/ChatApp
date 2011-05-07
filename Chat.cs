@@ -34,19 +34,19 @@ public class Chat {
         return customList;
     }
 
-    private Dictionary<Chatter, bool> upToDate = new Dictionary<Chatter, bool>();
+    private Dictionary<int, bool> upToDate = new Dictionary<int, bool>();
 
     private List<Chatter> m_chatters = new List<Chatter>();
 
     public void join(Chatter chatter) {
         m_chatters.Add(chatter);
-        upToDate.Add(chatter, false);
+        upToDate.Add(chatter.intId, false);
         resetUpToDate();
     }
 
     public void leave(Chatter chatter) {
         m_chatters.Remove(chatter);
-        upToDate.Remove(chatter);
+        upToDate.Remove(chatter.intId);
         if (m_chatters.Count == 0)
             Chat.removeChat(this);
     }
@@ -116,7 +116,8 @@ public class Chat {
         lock (typeof(Chat)) {
             m_messages.Add(new ChatMessageLine { id = id, Message = message });
         }
-        resetUpToDate();
+        if (upToDate.ContainsKey(id))
+            upToDate[id] = false;
         return message;
     }
 
@@ -129,7 +130,8 @@ public class Chat {
         lock (typeof(Chat)) {
             m_messages.Add(new ChatMessageLine { id = id, Message = message });
         }
-        resetUpToDate();
+        if (upToDate.ContainsKey(id))
+            upToDate[id] = false;
         return message;
     }
 
@@ -138,20 +140,27 @@ public class Chat {
     }
 
     private void resetUpToDate() {
-        List<Chatter> chatters = new List<Chatter>();
-        foreach (Chatter chatter in upToDate.Keys)
-            chatters.Add(chatter);
-        foreach (Chatter chatter in chatters)
-            upToDate[chatter] = false;
+        List<int> chatters = new List<int>();
+        foreach (int id in upToDate.Keys)
+            chatters.Add(id);
+        foreach (int id in chatters)
+            upToDate[id] = false;
     }
 
-    public bool newUpdates(Chatter chatter) {
-        bool noUpdate = false;
-        upToDate.TryGetValue(chatter, out noUpdate);
+    public bool newUpdates(int id) {
+        bool noUpdate = true;
+        if (!upToDate.TryGetValue(id, out noUpdate))
+            noUpdate = true;
         bool returnValue = !noUpdate;
-        upToDate[chatter] = true;
         return returnValue;
     }
+
+    public void iAmUpToDate(int id)
+    {
+        upToDate[id] = true;
+    }
+
+   
 
     public override string ToString() {
         String tmp = "";

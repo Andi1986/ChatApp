@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 namespace Tests {
 
-
     /// <summary>
     ///Dies ist eine Testklasse für "DBConnectionHelperTest" und soll
     ///alle DBConnectionHelperTest Komponententests enthalten.
@@ -15,14 +14,17 @@ namespace Tests {
     public class DBConnectionHelperTest {
         public const string AspNetDevelopmentServerHost = @"D:\Dropbox\Workspace\ChatApp";
 
+
         private TestContext testContextInstance;
 
         /// <summary>
         ///Ruft den Testkontext auf, der Informationen
         ///über und Funktionalität für den aktuellen Testlauf bietet, oder legt diesen fest.
         ///</summary>
-        public TestContext TestContext {
-            get {
+        public TestContext TestContext
+        {
+            get
+            {
                 return testContextInstance;
             }
             set {
@@ -69,9 +71,10 @@ namespace Tests {
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost(AspNetDevelopmentServerHost, "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
-        public void ExecuteNonQueryTest() {
+        public void ExecuteNonQueryTest()
+        {
             string sql = string.Empty; // TODO: Passenden Wert initialisieren
             DBConnectionHelper.ExecuteNonQuery(sql);
             Assert.Inconclusive("Eine Methode, die keinen Wert zurückgibt, kann nicht überprüft werden.");
@@ -85,9 +88,10 @@ namespace Tests {
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost(AspNetDevelopmentServerHost, "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void FriendUsersTest() {
+
             int userID1 = 0; // TODO: Passenden Wert initialisieren
             int userID2 = 0; // TODO: Passenden Wert initialisieren
             bool expected = false; // TODO: Passenden Wert initialisieren
@@ -105,9 +109,10 @@ namespace Tests {
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost(AspNetDevelopmentServerHost, "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
-        public void InitTest() {
+        public void InitTest()
+        {
             string dbPath = string.Empty; // TODO: Passenden Wert initialisieren
             DBConnectionHelper.Init(dbPath);
             Assert.IsFalse(String.IsNullOrEmpty(DBConnectionHelper._columnBuddyBuddy), "_columnBuddyBuddy is null or empty. config was not read");
@@ -128,7 +133,7 @@ namespace Tests {
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost(AspNetDevelopmentServerHost, "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void MakeSQLInsertQueryTest() {
             string table = "TUsers";
@@ -154,9 +159,10 @@ namespace Tests {
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost(AspNetDevelopmentServerHost, "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
-        public void ReadBuddiesFromUserTest() {
+        public void ReadBuddiesFromUserTest()
+        {
             int id = 0; // TODO: Passenden Wert initialisieren
             List<int> expected = null; // TODO: Passenden Wert initialisieren
             List<int> actual;
@@ -173,7 +179,7 @@ namespace Tests {
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost(AspNetDevelopmentServerHost, "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void ReadUserRecordsTest() {
             List<Record> expected = null; // TODO: Passenden Wert initialisieren
