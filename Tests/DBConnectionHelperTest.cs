@@ -74,7 +74,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void ExecuteNonQueryTest()
         {
@@ -91,7 +91,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void FriendUsersTest()
         {
@@ -112,7 +112,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void InitTest()
         {
@@ -129,7 +129,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void MakeSQLInsertQueryTest()
         {
@@ -151,7 +151,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void ReadBuddiesFromUserTest()
         {
@@ -171,7 +171,7 @@ namespace Tests
         // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\SoftwareEngineeringII\\chatApp\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void ReadUserRecordsTest()
         {
