@@ -9,7 +9,6 @@ namespace WebApplication1 {
     public partial class _Chat : System.Web.UI.Page {
         private Chat m_chat;
         private Chatter m_chatter;
-        private int currChatroomIndex = 0;
 
         private static object m_lock = new object();
 
@@ -21,12 +20,8 @@ namespace WebApplication1 {
                 try { m_chatter = Chatter.ActiveChatters()[guid]; } catch { Response.Redirect("Default.aspx"); }
                 m_chat = m_chatter.MainChat;
 
-                if (Session["currChatroomIndex"] != null)
-                    currChatroomIndex = Convert.ToInt32(Session["currChatroomIndex"]);
-
                 _UpdateChatterList();
                 _UpdateChatMessageList();
-                _UpdateChatRooms();
                 WelcomeLabel.Text = "Hallo " + m_chatter.Name;
                 if (m_chatter.mainChat == 0)
                     ChatRoomNameLabel.Text = "[0] Main Chatroom";
@@ -82,10 +77,10 @@ namespace WebApplication1 {
             _UpdateChatterList();
             _UpdateChatMessageList();
             _UpdateAllChatter();
-            _UpdateChatRooms();
-
-            ChatUpdatePanel.Update();
             m_chat.iAmUpToDate(m_chatter.intId);
+
+            _UpdateChatRooms();
+            ChatUpdatePanel.Update();
             NewMessageTextBox.Focus();
         }
 
@@ -141,24 +136,28 @@ namespace WebApplication1 {
             ddlAllBuddys.DataBind();
         }
 
-        private void _UpdateChatRooms() {
-            if (ChatRoomList.Items.Count != m_chatter.myChats.Count) {
-                ChatRoomList.Items.Clear();
+        private void _UpdateChatRooms()
+        {
 
-                int i = 0;
-                foreach (Chat chat in m_chatter.myChats) {
-                    if (i == 0)
-                        ChatRoomList.Items.Add(new ListItem("[0] Main Chatroom", chat.Id.ToString()));
-                    else
-                        ChatRoomList.Items.Add(new ListItem(String.Format("[{0}] {1}", i, chat), chat.Id.ToString()));
-                    i++;
-                }
-                lock (m_lock) {
-                    Session["IgnoreChatroomChange"] = true;
-                    ChatRoomList.SelectedIndex = m_chatter.mainChat;
-                    TextBoxUpdatePanel.Update();
-                }
+            ChatRoomListBox.Items.Clear();
+
+            int i = 0;
+            string change = "";
+            foreach (Chat chat in m_chatter.myChats)
+            {
+                if (m_chatter.hasRoomUpdated(i))
+                    change = "! ";
+                else
+                    change = "";
+                if (i == 0)
+                    ChatRoomListBox.Items.Add(new ListItem(change + "[0] Main Chatroom", chat.Id.ToString()));
+                else
+                    ChatRoomListBox.Items.Add(new ListItem(String.Format(change + "[{0}] {1}", i, chat), chat.Id.ToString()));
+                i++;
             }
+
+            TextBoxUpdatePanel.Update();
+
 
         }
 
@@ -195,24 +194,8 @@ namespace WebApplication1 {
         }
 
         protected void ChatTextTimer_Tick(object sender, EventArgs e) {
-            if (m_chat.newUpdates(m_chatter.intId))
+            if (m_chatter.newUpdates())
                 updateAll();
-        }
-
-        protected void ChangeButton_Click(object sender, EventArgs e) {
-            m_chatter.changeRoom(currChatroomIndex >= 0 ? currChatroomIndex : 0);
-            m_chat = m_chatter.MainChat;
-            updateAll();
-        }
-
-        protected void ChatRoomList_SelectedIndexChanged(object sender, EventArgs e) {
-            lock (m_lock) {
-                if (Convert.ToBoolean(Session["IgnoreChatroomChange"])) {
-                    Session["IgnoreChatroomChange"] = false;
-                    return;
-                }
-            }
-            Session["currChatroomIndex"] = ChatRoomList.SelectedIndex;
         }
 
         protected void NewChatButton_Click(object sender, EventArgs e) {
@@ -241,6 +224,13 @@ namespace WebApplication1 {
                 }
             }
             return values.ToArray();
+        }
+
+        protected void ChatRoomListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ChatRoomListBox.SelectedIndex >= 0)
+                m_chatter.changeRoom(ChatRoomListBox.SelectedIndex);
+            updateAll();
         }
 
 

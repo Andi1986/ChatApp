@@ -48,20 +48,25 @@
         </ContentTemplate>
     </asp:UpdatePanel>
     Send Message<asp:Panel ID="Panel1" runat="server" DefaultButton="SendButton">
-        <asp:UpdatePanel ID="TextBoxUpdatePanel" runat="server" UpdateMode="Conditional">
+        <asp:UpdatePanel ID="MessageBoxUpdatePanel" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
-                <asp:TextBox ID="NewMessageTextBox" Columns="50" runat="server" />
+                <asp:TextBox ID="NewMessageTextBox" Columns="50" runat="server" />           
                 <asp:Button ID="SendButton" runat="server" EnableViewState="false" OnClick="SendButton_Click"
-                    Text="Send" />
+                Text="Send" />
                 &nbsp;
-                <asp:DropDownList ID="ChatRoomList" runat="server" AutoPostBack="False" OnSelectedIndexChanged="ChatRoomList_SelectedIndexChanged">
-                </asp:DropDownList>
-                &nbsp;
-                <asp:Button ID="ChangeButton" runat="server" OnClick="ChangeButton_Click" Text="Change Room" />
-                &nbsp;
-                <asp:Button ID="LeaveButton" runat="server" OnClick="LeaveButton_Click" Text="Leave Room" />
+                <asp:Button ID="LeaveButton" runat="server" OnClick="LeaveButton_Click" 
+                    Text="Leave Room" />
                 &nbsp;
                 <asp:Button ID="FriendUserButton" runat="server" Text="Friend User" OnClientClick="javascript:OpenChild()" />
+                <br />
+                Chatrooms:<br />
+            </ContentTemplate>
+        </asp:UpdatePanel>
+         <asp:UpdatePanel ID="TextBoxUpdatePanel" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <asp:ListBox ID="ChatRoomListBox" runat="server" Height="82px" 
+                    onselectedindexchanged="ChatRoomListBox_SelectedIndexChanged" Width="309px">
+                </asp:ListBox>
                 <asp:HiddenField ID="FriendRequestId" runat="server" />
             </ContentTemplate>
         </asp:UpdatePanel>

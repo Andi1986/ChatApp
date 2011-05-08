@@ -146,12 +146,29 @@ public class Chatter : IComparable {
     }
 
     public void changeRoom(int index) {
-        mainChat = index;
-        Chat newChat = myChats[mainChat];
+        if (index >= 0 && index < myChats.Count)
+            mainChat = index;
+        else
+            mainChat = 0;
     }
 
     public int CompareTo(object obj) {
         Chatter o = (Chatter)obj;
         return (Name + Id.ToString()).CompareTo(o.Name + o.Id.ToString());
+    }
+
+    public bool hasRoomUpdated(int index)
+    {
+        if (index >= 0 && index < myChats.Count)
+            return myChats[index].newUpdates(intId);
+        return false;
+    }
+
+    public bool newUpdates()
+    {
+        foreach(Chat chat in myChats)
+            if(chat.newUpdates(intId))
+                return true;
+        return false;
     }
 }

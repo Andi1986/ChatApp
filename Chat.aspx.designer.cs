@@ -76,17 +76,16 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.BulletedList ChattersBulletedList;
         
         /// <summary>
-
-        /// ChatRoomNameLabel control.
+        /// ChatRoomNameLabel-Steuerelement
         /// </summary>
         /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ChatRoomNameLabel;
         
         /// <summary>
-        /// ChatMessageList control.
+        /// ChatMessageList-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
@@ -104,13 +103,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// TextBoxUpdatePanel-Steuerelement
+        /// MessageBoxUpdatePanel-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel TextBoxUpdatePanel;
+        protected global::System.Web.UI.UpdatePanel MessageBoxUpdatePanel;
         
         /// <summary>
         /// NewMessageTextBox-Steuerelement
@@ -131,24 +130,6 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Button SendButton;
         
         /// <summary>
-        /// ChatRoomList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ChatRoomList;
-        
-        /// <summary>
-        /// ChangeButton control.
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ChangeButton;
-        
-        /// <summary>
         /// LeaveButton-Steuerelement
         /// </summary>
         /// <remarks>
@@ -158,25 +139,43 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Button LeaveButton;
         
         /// <summary>
-        /// FriendUserButton control.
+        /// FriendUserButton-Steuerelement
         /// </summary>
         /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button FriendUserButton;
         
         /// <summary>
-        /// FriendRequestId control.
+        /// TextBoxUpdatePanel-Steuerelement
         /// </summary>
         /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel TextBoxUpdatePanel;
+        
+        /// <summary>
+        /// ChatRoomListBox-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ChatRoomListBox;
+        
+        /// <summary>
+        /// FriendRequestId-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField FriendRequestId;
         
         /// <summary>
-        /// LogoutButton control.
+        /// LogoutButton-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
