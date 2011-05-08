@@ -34,55 +34,6 @@ namespace Tests
             }
         }
 
-        #region Zusätzliche Testattribute
-        // 
-        //Sie können beim Verfassen Ihrer Tests die folgenden zusätzlichen Attribute verwenden:
-        //
-        //Mit ClassInitialize führen Sie Code aus, bevor Sie den ersten Test in der Klasse ausführen.
-        //[ClassInitialize()]
-        //public static void MyClassInitialize(TestContext testContext)
-        //{
-        //}
-        //
-        //Mit ClassCleanup führen Sie Code aus, nachdem alle Tests in einer Klasse ausgeführt wurden.
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //}
-        //
-        //Mit TestInitialize können Sie vor jedem einzelnen Test Code ausführen.
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
-        //Mit TestCleanup können Sie nach jedem einzelnen Test Code ausführen.
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-        //}
-        //
-        #endregion
-
-
-        /// <summary>
-        ///Ein Test für "Chatter-Konstruktor"
-        ///</summary>
-        // TODO: Sicherstellen, dass mit dem UrlToTest-Attribut die URL zu einer ASP.NET-Seite angegeben wird (z.B.
-        // http://.../Default.aspx). Dies ist notwendig, damit der Komponententest auf dem Webserver ausgeführt wird,
-        // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
-        [TestMethod()]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
-        [UrlToTest("http://localhost:51655/")]
-        public void ChatterConstructorTest()
-        {
-            Guid id = new Guid(); // TODO: Passenden Wert initialisieren
-            string name = string.Empty; // TODO: Passenden Wert initialisieren
-            Chatter target = new Chatter(id, name);
-            Assert.Inconclusive("TODO: Code zum Überprüfen des Ziels implementieren");
-        }
-
         /// <summary>
         ///Ein Test für "ActiveChatters"
         ///</summary>

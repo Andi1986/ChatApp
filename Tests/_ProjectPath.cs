@@ -7,6 +7,6 @@ namespace Tests
 {
     class _ProjectPath
     {
-        public const string projectPath = "C:\\Users\\Frank\\Documents\\Visual Studio 2010\\Projects\\Chat";
+        public const string projectPath = "C:\\SoftwareEngineeringII\\chatApp\\ChatApp";
     }
 }

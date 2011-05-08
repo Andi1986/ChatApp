@@ -10,15 +10,20 @@ namespace Tests
     [TestClass]
     public class Chat_offlineTest
     {
+        Chat chat;
 
+        [TestInitialize]
+        public void CreateChat()
+        {
+            chat = new Chat();
+        }
 
 
         [TestMethod()]
         public void ChatConstructorTest()
         {
-            Chat target = new Chat();
-            Assert.IsNotNull(target);
-            Assert.IsInstanceOfType(target, typeof(Chat));
+            Assert.IsNotNull(chat);
+            Assert.IsInstanceOfType(chat, typeof(Chat));
         }
 
         [TestMethod()]
@@ -31,7 +36,6 @@ namespace Tests
         [TestMethod()]
         public void joinTest()
         {
-            Chat chat = new Chat();
             Assert.IsNotNull(chat.Chatters);
             Chatter chatter1 = new Chatter(new Guid(), "chatter 1");
             chatter1.intId = 0;
@@ -53,7 +57,6 @@ namespace Tests
         [TestMethod()]
         public void SendMessageTest()
         {
-            Chat chat = new Chat();
             for (int i = 0; i < 5; i++)
             {
                 string name = "myName"+i;
@@ -69,7 +72,6 @@ namespace Tests
         [TestMethod()]
         public void SendMessageTest1()
         {
-            Chat chat = new Chat();
             for (int i = 0; i < 5; i++)
             {
                 string message = "Another test message!!! " + i;
@@ -83,7 +85,6 @@ namespace Tests
         [TestMethod()]
         public void SendMessageToTest()
         {
-            Chat chat = new Chat();
             for (int i = 0; i < 5; i++)
             {
                 string message = "A test message from me for you.." + i;
@@ -98,7 +99,6 @@ namespace Tests
         [TestMethod()]
         public void SendMessageToTest1()
         {
-            Chat chat = new Chat();
             for (int i = 0; i < 5; i++)
             {
                 string name = "myName" + i;
@@ -115,7 +115,6 @@ namespace Tests
         [TestMethod()]
         public void GetMyMessagesTest()
         {
-            Chat chat = new Chat();
             List<Chat.ChatMessageLine> allMessages = chat.AllMessages;
             Chat.ChatMessageLine messageForAll = new Chat.ChatMessageLine();
             messageForAll.id = -1;
@@ -142,7 +141,6 @@ namespace Tests
         [TestMethod()]
         public void newUpdatesTest()
         {
-            Chat chat = new Chat();
             Assert.IsFalse(chat.newUpdates(1), "Updates for a not existing chatter id");
             Chatter chatter = new Chatter(new Guid(), "chatter");
             chatter.intId = 2;
