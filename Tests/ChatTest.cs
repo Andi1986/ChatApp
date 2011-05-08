@@ -299,21 +299,6 @@ namespace Tests
             Assert.IsFalse(chat.GetMyMessages(2).Contains(privateMessage.Message), "The private message was returned to the wrong chatter");
         }
 
-
-        /// <summary>
-        ///Ein Test für "ToString"
-        ///</summary>
-        // TODO: Sicherstellen, dass mit dem UrlToTest-Attribut die URL zu einer ASP.NET-Seite angegeben wird (z.B.
-        // http://.../Default.aspx). Dies ist notwendig, damit der Komponententest auf dem Webserver ausgeführt wird,
-        // unabhängig davon, ob eine Seite, ein Webdienst oder ein WCF-Dienst getestet wird.
-        [TestMethod()]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
-        [UrlToTest("http://localhost:51655/")]
-        public void ToStringTest()
-        {
-        }
-
         /// <summary>
         ///Ein Test für "getNewChat"
         ///</summary>

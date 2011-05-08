@@ -33,3 +33,8 @@ C:\SoftwareEngineeringII\chatApp\ChatApp\bin\WebApplication1.pdb
 C:\SoftwareEngineeringII\chatApp\ChatApp\obj\Debug\ResolveAssemblyReference.cache
 C:\SoftwareEngineeringII\chatApp\ChatApp\obj\Debug\WebApplication1.dll
 C:\SoftwareEngineeringII\chatApp\ChatApp\obj\Debug\WebApplication1.pdb
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\ChatApp\bin\WebApplication1.dll
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\ChatApp\bin\WebApplication1.pdb
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\ChatApp\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\ChatApp\obj\Debug\WebApplication1.dll
+C:\Users\Frank\Documents\Visual Studio 2010\Projects\Chat\ChatApp\obj\Debug\WebApplication1.pdb
