@@ -23,10 +23,6 @@ namespace WebApplication1 {
                 _UpdateChatterList();
                 _UpdateChatMessageList();
                 WelcomeLabel.Text = "Hallo " + m_chatter.Name;
-                if (m_chatter.mainChat == 0)
-                    ChatRoomNameLabel.Text = "[0] Main Chatroom";
-                else
-                    ChatRoomNameLabel.Text = String.Format("[{0}] {1}", m_chatter.mainChat, m_chat);
             } else {
                 Response.Redirect("Default.aspx");
                 return;
@@ -80,6 +76,10 @@ namespace WebApplication1 {
             m_chat.iAmUpToDate(m_chatter.intId);
 
             _UpdateChatRooms();
+            if (m_chatter.mainChat == 0)
+                ChatRoomNameLabel.Text = "[0] Main Chatroom";
+            else
+                ChatRoomNameLabel.Text = String.Format("[{0}] {1}", m_chatter.mainChat, m_chat);
             ChatUpdatePanel.Update();
             NewMessageTextBox.Focus();
         }
