@@ -156,6 +156,42 @@ namespace WebApplication1 {
             return ret;
         }
 
+        public static bool UnfriendUsers(int userID1, int userID2) {
+            OleDbConnection conn = null;
+            bool ret = true;
+            try {
+                List<Record> recordList = ReadUserRecords();
+                bool found1 = false;
+                bool found2 = false;
+                foreach (Record r in recordList) {
+                    if (Convert.ToInt32(r.Entries["ID"]) == userID1)
+                        found1 = true;
+                    if (Convert.ToInt32(r.Entries["ID"]) == userID2)
+                        found2 = true;
+                }
+
+                if (!found1 || !found2)
+                    return false;
+
+                conn = new OleDbConnection(connectionString);
+                conn.Open();
+
+
+                String sql = MakeSQLDeleteQuery(_tableBuddy, new String[] { _columnBuddyUser, _columnBuddyBuddy }, new String[] { userID1.ToString(), userID2.ToString() });
+                OleDbCommand cmd = new OleDbCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+
+                sql = MakeSQLInsertQuery(_tableBuddy, new String[] { _columnBuddyUser, _columnBuddyBuddy }, new String[] { userID2.ToString(), userID1.ToString() });
+                cmd = new OleDbCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            } catch (Exception e) {
+                ret = false;
+            } finally {
+                if (conn != null) conn.Close();
+            }
+            return ret;
+        }
+
         public static String MakeSQLInsertQuery(String table, String[] columns, String[] values) {
             String query = "INSERT INTO " + table + " (";
             for (int i = 0; i < columns.Length; i++) {
@@ -170,6 +206,23 @@ namespace WebApplication1 {
                     query += ", ";
             }
             query += ")";
+
+            return query;
+        }
+
+        public static String MakeSQLDeleteQuery(String table, String[] key, String[] value) {
+            if (String.IsNullOrWhiteSpace(table) || key == null || key.Length == 0 || value == null || value.Length == 0)
+                return null;
+            if (key.Length != value.Length)
+                return null;
+
+            String query = "DELETE FROM " + table + " WHERE ";
+            for (int i = 0; i < key.Length; i++) {
+                if (i > 0)
+                    query += " AND ";
+
+                query += key[i] + "=" + value[i];
+            }
 
             return query;
         }

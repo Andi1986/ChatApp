@@ -188,5 +188,45 @@ namespace Tests {
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Überprüfen Sie die Richtigkeit dieser Testmethode.");
         }
+
+        /// <summary>
+        ///A test for MakeSQLDeleteQuery
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("D:\\Dropbox\\Workspace\\ChatApp", "/")]
+        [UrlToTest("http://localhost:51655/")]
+        public void MakeSQLDeleteQueryTest() {
+            string table = "Users";
+            string[] key = {"CUsers", "CBuddy"};
+            string[] value = {"20","21"};
+            string expected = "DELETE FROM Users WHERE CUsers=20 AND CBuddy=21";
+            string actual;
+            actual = DBConnectionHelper.MakeSQLDeleteQuery(table, key, value);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for UnfriendUsers
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("D:\\Dropbox\\Workspace\\ChatApp", "/")]
+        [UrlToTest("http://localhost:51655/")]
+        public void UnfriendUsersTest() {
+            int userID1 = 0; // TODO: Initialize to an appropriate value
+            int userID2 = 0; // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = DBConnectionHelper.UnfriendUsers(userID1, userID2);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
     }
 }
