@@ -1,4 +1,5 @@
-﻿using WebApplication1;
+﻿using System.Threading;
+using WebApplication1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
@@ -12,8 +13,6 @@ namespace Tests {
     ///</summary>
     [TestClass()]
     public class DBConnectionHelperTest {
-        public const string AspNetDevelopmentServerHost = @"D:\Dropbox\Workspace\ChatApp";
-
 
         private TestContext testContextInstance;
 
@@ -21,10 +20,8 @@ namespace Tests {
         ///Ruft den Testkontext auf, der Informationen
         ///über und Funktionalität für den aktuellen Testlauf bietet, oder legt diesen fest.
         ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
+        public TestContext TestContext {
+            get {
                 return testContextInstance;
             }
             set {
@@ -73,11 +70,21 @@ namespace Tests {
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
-        public void ExecuteNonQueryTest()
-        {
-            string sql = string.Empty; // TODO: Passenden Wert initialisieren
+        public void ExecuteNonQueryTest() {
+            string sql = "INSERT INTO TUsers (CName, CPassword, CEmail, CGuid) VALUES ('Testname', 'Testpassword', 'Testemail', 'Testguid')";
             DBConnectionHelper.ExecuteNonQuery(sql);
-            Assert.Inconclusive("Eine Methode, die keinen Wert zurückgibt, kann nicht überprüft werden.");
+            List<Record> list = DBConnectionHelper.ReadUserRecords();
+
+            Assert.AreEqual(1, list.Count);
+            Assert.AreEqual("Testname", list[0].Entries[DBConnectionHelper._columnName]);
+            Assert.AreEqual("Testpassword", list[0].Entries[DBConnectionHelper._columPasword]);
+            Assert.AreEqual("Testemail", list[0].Entries[DBConnectionHelper._columnEmail]);
+            Assert.AreEqual("Testguid", list[0].Entries[DBConnectionHelper._columnGuid]);
+
+            sql = "DELETE FROM TUsers WHERE ID=" + list[0].Entries["ID"];
+            DBConnectionHelper.ExecuteNonQuery(sql);
+            list = DBConnectionHelper.ReadUserRecords();
+            Assert.AreEqual(0, list.Count);
         }
 
         /// <summary>
@@ -92,13 +99,30 @@ namespace Tests {
         [UrlToTest("http://localhost:51655/")]
         public void FriendUsersTest() {
 
-            int userID1 = 0; // TODO: Passenden Wert initialisieren
-            int userID2 = 0; // TODO: Passenden Wert initialisieren
-            bool expected = false; // TODO: Passenden Wert initialisieren
-            bool actual;
-            actual = DBConnectionHelper.FriendUsers(userID1, userID2);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Überprüfen Sie die Richtigkeit dieser Testmethode.");
+            for (int i = 0; i < 2; i++) {
+                DBConnectionHelper.ExecuteNonQuery(DBConnectionHelper.MakeSQLInsertQuery(DBConnectionHelper._tableUser, new String[]{DBConnectionHelper._columnName,
+                                DBConnectionHelper._columPasword,
+                                DBConnectionHelper._columnEmail,
+                                DBConnectionHelper._columnGuid},
+                             new String[] {"Username" + i.ToString("00"),
+                                "Password"+ i.ToString("00"),
+                                "email"+ i.ToString("00")+"@mail.de",
+                               Guid.NewGuid().ToString()}));
+            }
+            Thread.Sleep(1000);
+
+            List<Record> list = DBConnectionHelper.ReadUserRecords();
+            int userID1 = Convert.ToInt32(list[0].Entries["ID"]);
+            int userID2 = Convert.ToInt32(list[1].Entries["ID"]);
+            bool re = DBConnectionHelper.FriendUsers(userID1, userID2);
+            Assert.AreEqual(true, re);
+            List<int> actual = DBConnectionHelper.ReadBuddiesFromUser(userID1);
+            Assert.AreEqual(1, actual.Count);
+            Assert.AreEqual(userID2, actual[0]);
+
+            actual = DBConnectionHelper.ReadBuddiesFromUser(userID2);
+            Assert.AreEqual(1, actual.Count);
+            Assert.AreEqual(userID1, actual[0]);
         }
 
         /// <summary>
@@ -111,8 +135,7 @@ namespace Tests {
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
-        public void InitTest()
-        {
+        public void InitTest() {
             string dbPath = string.Empty; // TODO: Passenden Wert initialisieren
             DBConnectionHelper.Init(dbPath);
             Assert.IsFalse(String.IsNullOrEmpty(DBConnectionHelper._columnBuddyBuddy), "_columnBuddyBuddy is null or empty. config was not read");
@@ -161,14 +184,40 @@ namespace Tests {
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
-        public void ReadBuddiesFromUserTest()
-        {
-            int id = 0; // TODO: Passenden Wert initialisieren
-            List<int> expected = null; // TODO: Passenden Wert initialisieren
+        public void ReadBuddiesFromUserTest() {
+            int id = 1;
+            int expected = 0;
             List<int> actual;
             actual = DBConnectionHelper.ReadBuddiesFromUser(id);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Überprüfen Sie die Richtigkeit dieser Testmethode.");
+            Assert.IsNotNull(actual);
+            Assert.AreEqual(expected, actual.Count);
+
+            int count = 3;
+            for (int i = 0; i < count; i++) {
+                DBConnectionHelper.ExecuteNonQuery(DBConnectionHelper.MakeSQLInsertQuery(DBConnectionHelper._tableUser, new String[]{DBConnectionHelper._columnName,
+                                DBConnectionHelper._columPasword,
+                                DBConnectionHelper._columnEmail,
+                                DBConnectionHelper._columnGuid},
+                             new String[] {"Username" + i.ToString("00"),
+                                "Password"+ i.ToString("00"),
+                                "email"+ i.ToString("00")+"@mail.de",
+                               Guid.NewGuid().ToString()}));
+            }
+            Thread.Sleep(1000);
+
+            List<Record> list = DBConnectionHelper.ReadUserRecords();
+            for (int i = 0; i < count - 1; i++) {
+                DBConnectionHelper.FriendUsers(Convert.ToInt32(list[0].Entries["ID"]),
+                               Convert.ToInt32(list[i + 1].Entries["ID"]));
+            }
+
+
+            actual = DBConnectionHelper.ReadBuddiesFromUser(Convert.ToInt32(list[0].Entries["ID"]));
+            for (int i = 0; i < count - 1; i++) {
+                Assert.IsTrue(actual.Contains(Convert.ToInt32(list[i + 1].Entries["ID"])), "Expected ID " + list[i + 1].Entries["ID"] + " not found");
+            }
+
+            Assert.AreEqual(count - 1, actual.Count);
         }
 
         /// <summary>
@@ -182,11 +231,37 @@ namespace Tests {
         [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void ReadUserRecordsTest() {
-            List<Record> expected = null; // TODO: Passenden Wert initialisieren
+            int expected = 0; // 
             List<Record> actual;
             actual = DBConnectionHelper.ReadUserRecords();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Überprüfen Sie die Richtigkeit dieser Testmethode.");
+            Assert.IsNotNull(actual);
+            Assert.AreEqual(expected, actual.Count);
+
+            int count = 3;
+            for (int i = 0; i < count; i++) {
+                DBConnectionHelper.ExecuteNonQuery(DBConnectionHelper.MakeSQLInsertQuery(DBConnectionHelper._tableUser, new String[]{DBConnectionHelper._columnName,
+                                DBConnectionHelper._columPasword,
+                                DBConnectionHelper._columnEmail,
+                                DBConnectionHelper._columnGuid},
+                             new String[] {"Username" + i.ToString("00"),
+                                "Password"+ i.ToString("00"),
+                                "email"+ i.ToString("00")+"@mail.de",
+                               Guid.NewGuid().ToString()}));
+            }
+            Thread.Sleep(1000);
+            actual = DBConnectionHelper.ReadUserRecords();
+            Assert.IsNotNull(actual);
+            Assert.AreEqual(count, actual.Count);
+
+            for (int i = 0; i < count; i++) {
+                Record record = actual[i];
+
+                Assert.AreEqual("Username" + i.ToString("00"), record.Entries[DBConnectionHelper._columnName]);
+                Assert.AreEqual("Password" + i.ToString("00"), record.Entries[DBConnectionHelper._columPasword]);
+                Assert.AreEqual("email" + i.ToString("00") + "@mail.de", record.Entries[DBConnectionHelper._columnEmail]);
+            }
+
+
         }
 
         /// <summary>
@@ -197,14 +272,21 @@ namespace Tests {
         // whether you are testing a page, web service, or a WCF service.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("D:\\Dropbox\\Workspace\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void MakeSQLDeleteQueryTest() {
             string table = "Users";
-            string[] key = {"CUsers", "CBuddy"};
-            string[] value = {"20","21"};
+            string[] key = { "CUsers", "CBuddy" };
+            string[] value = { "20", "21" };
             string expected = "DELETE FROM Users WHERE CUsers=20 AND CBuddy=21";
             string actual;
+            actual = DBConnectionHelper.MakeSQLDeleteQuery(table, key, value);
+            Assert.AreEqual(expected, actual);
+
+            table = "Users";
+            key = new string[] { "CUsers" };
+            value = new string[] { "20" };
+            expected = "DELETE FROM Users WHERE CUsers=20";
             actual = DBConnectionHelper.MakeSQLDeleteQuery(table, key, value);
             Assert.AreEqual(expected, actual);
         }
@@ -217,14 +299,102 @@ namespace Tests {
         // whether you are testing a page, web service, or a WCF service.
         [TestMethod()]
         [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("D:\\Dropbox\\Workspace\\ChatApp", "/")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void UnfriendUsersTest() {
-            int userID1 = 0; // TODO: Initialize to an appropriate value
-            int userID2 = 0; // TODO: Initialize to an appropriate value
+            FriendUsersTest();
+            List<Record> list = DBConnectionHelper.ReadUserRecords();
+            Assert.AreEqual(2, list.Count);
+
+            int userID1 = Convert.ToInt32(list[0].Entries["ID"]);
+            int userID2 = Convert.ToInt32(list[1].Entries["ID"]);
+
+            bool actual = DBConnectionHelper.UnfriendUsers(userID1, userID2);
+            Assert.AreEqual(true, actual);
+
+            list = DBConnectionHelper.ReadUserRecords();
+            Assert.AreEqual(2, list.Count);
+
+            List<int> buddies = DBConnectionHelper.ReadBuddiesFromUser(userID1);
+            Assert.AreEqual(0, buddies.Count);
+            buddies = DBConnectionHelper.ReadBuddiesFromUser(userID2);
+            Assert.AreEqual(0, buddies.Count);
+
+        }
+
+
+        /// <summary>
+        ///A test for ClearTable
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
+        [UrlToTest("http://localhost:51655/")]
+        public void ClearTableTest() {
+            DBConnectionHelper.Init(_ProjectPath.projectPath + @"\DB\Database_Test.mdb");
+            string table = DBConnectionHelper._tableBuddy;
+            DBConnectionHelper.ClearTable(table);
+            Thread.Sleep(1000);
+            List<Record> list = DBConnectionHelper.ReadUserRecords();
+            int before = list.Count;
+            if (before == 0) {
+                DBConnectionHelper.ExecuteNonQuery(DBConnectionHelper.MakeSQLInsertQuery(DBConnectionHelper._tableUser, new String[]{DBConnectionHelper._columnName,
+                                DBConnectionHelper._columPasword,
+                                DBConnectionHelper._columnEmail,
+                                DBConnectionHelper._columnGuid},
+                                new String[] {"Username",
+                                "Password",
+                                "email@mail.de",
+                               Guid.NewGuid().ToString()}));
+                Thread.Sleep(1000);
+                before = (list = DBConnectionHelper.ReadUserRecords()).Count;
+            }
+            Assert.IsTrue(before > 0, "No entries in table");
+
+            table = DBConnectionHelper._tableUser;
+            DBConnectionHelper.ClearTable(table);
+            Thread.Sleep(1000);
+            int after = (list = DBConnectionHelper.ReadUserRecords()).Count;
+            Assert.AreEqual(0, after);
+        }
+
+        [TestInitialize]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
+        [UrlToTest("http://localhost:51655/")]
+        public void Setup() {
+            DBConnectionHelper.Init(_ProjectPath.projectPath + @"\DB\Database_Test.mdb");
+            DBConnectionHelper.ClearTable(DBConnectionHelper._tableBuddy);
+            DBConnectionHelper.ClearTable(DBConnectionHelper._tableUser);
+        }
+
+        [TestCleanup]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
+        [UrlToTest("http://localhost:51655/")]
+        public void Teardown() {
+            DBConnectionHelper.ClearTable(DBConnectionHelper._tableBuddy);
+            DBConnectionHelper.ClearTable(DBConnectionHelper._tableUser);
+        }
+
+        /// <summary>
+        ///A test for DeleteUser
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
+        [UrlToTest("http://localhost:51655/")]
+        public void DeleteUserTest() {
+            int id = 0; // TODO: Initialize to an appropriate value
             bool expected = false; // TODO: Initialize to an appropriate value
             bool actual;
-            actual = DBConnectionHelper.UnfriendUsers(userID1, userID2);
+            actual = DBConnectionHelper.DeleteUser(id);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

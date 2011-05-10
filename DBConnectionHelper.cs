@@ -171,7 +171,7 @@ namespace WebApplication1 {
                 }
 
                 if (!found1 || !found2)
-                    return false;
+                   return false;
 
                 conn = new OleDbConnection(connectionString);
                 conn.Open();
@@ -181,9 +181,28 @@ namespace WebApplication1 {
                 OleDbCommand cmd = new OleDbCommand(sql, conn);
                 cmd.ExecuteNonQuery();
 
-                sql = MakeSQLInsertQuery(_tableBuddy, new String[] { _columnBuddyUser, _columnBuddyBuddy }, new String[] { userID2.ToString(), userID1.ToString() });
+                sql = MakeSQLDeleteQuery(_tableBuddy, new String[] { _columnBuddyUser, _columnBuddyBuddy }, new String[] { userID2.ToString(), userID1.ToString() });
                 cmd = new OleDbCommand(sql, conn);
                 cmd.ExecuteNonQuery();
+            } catch (Exception e) {
+                ret = false;
+            } finally {
+                if (conn != null) conn.Close();
+            }
+            return ret;
+        }
+
+        public static bool DeleteUser(int id) {
+            OleDbConnection conn = null;
+            bool ret = true;
+            try {
+                List<int> recordList = ReadBuddiesFromUser(id);
+                foreach (int i in recordList) {
+                    UnfriendUsers(id, i);
+                }
+
+                String sql = MakeSQLDeleteQuery(_tableUser, new string[] { "ID" }, new string[] { id.ToString() });
+                ExecuteNonQuery(sql);
             } catch (Exception e) {
                 ret = false;
             } finally {
@@ -225,6 +244,11 @@ namespace WebApplication1 {
             }
 
             return query;
+        }
+
+        public static void ClearTable(String table) {
+            String query = "DELETE * FROM " + table;
+            ExecuteNonQuery(query);
         }
     }
 }

@@ -57,6 +57,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="DB\Database.mdb" />
+    <Content Include="DB\Database_Test.mdb" />
     <Content Include="Default.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Styles\Site.css" />
