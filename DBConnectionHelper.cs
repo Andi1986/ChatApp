@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.OleDb;
 using System.Linq;
+using System.Threading;
 using System.Web;
 
 namespace WebApplication1 {
@@ -200,7 +201,7 @@ namespace WebApplication1 {
                 foreach (int i in recordList) {
                     UnfriendUsers(id, i);
                 }
-
+                Thread.Sleep(500);
                 String sql = MakeSQLDeleteQuery(_tableUser, new string[] { "ID" }, new string[] { id.ToString() });
                 ExecuteNonQuery(sql);
             } catch (Exception e) {

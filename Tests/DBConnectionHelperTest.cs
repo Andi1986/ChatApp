@@ -59,6 +59,24 @@ namespace Tests {
         //
         #endregion
 
+        [TestInitialize]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
+        [UrlToTest("http://localhost:51655/")]
+        public void Setup() {
+            DBConnectionHelper.Init(_ProjectPath.projectPath + @"\DB\Database_Test.mdb");
+            DBConnectionHelper.ClearTable(DBConnectionHelper._tableBuddy);
+            DBConnectionHelper.ClearTable(DBConnectionHelper._tableUser);
+        }
+
+        [TestCleanup]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
+        [UrlToTest("http://localhost:51655/")]
+        public void Teardown() {
+            DBConnectionHelper.ClearTable(DBConnectionHelper._tableBuddy);
+            DBConnectionHelper.ClearTable(DBConnectionHelper._tableUser);
+        }
 
         /// <summary>
         ///Ein Test für "ExecuteNonQuery"
@@ -361,24 +379,7 @@ namespace Tests {
             Assert.AreEqual(0, after);
         }
 
-        [TestInitialize]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
-        [UrlToTest("http://localhost:51655/")]
-        public void Setup() {
-            DBConnectionHelper.Init(_ProjectPath.projectPath + @"\DB\Database_Test.mdb");
-            DBConnectionHelper.ClearTable(DBConnectionHelper._tableBuddy);
-            DBConnectionHelper.ClearTable(DBConnectionHelper._tableUser);
-        }
 
-        [TestCleanup]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
-        [UrlToTest("http://localhost:51655/")]
-        public void Teardown() {
-            DBConnectionHelper.ClearTable(DBConnectionHelper._tableBuddy);
-            DBConnectionHelper.ClearTable(DBConnectionHelper._tableUser);
-        }
 
         /// <summary>
         ///A test for DeleteUser
@@ -391,12 +392,18 @@ namespace Tests {
         [AspNetDevelopmentServerHost(_ProjectPath.projectPath, "/")]
         [UrlToTest("http://localhost:51655/")]
         public void DeleteUserTest() {
-            int id = 0; // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = DBConnectionHelper.DeleteUser(id);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            FriendUsersTest();
+            List<Record> list = DBConnectionHelper.ReadUserRecords();
+            Assert.AreEqual(2, list.Count);
+
+            int id = Convert.ToInt32(list[0].Entries["ID"]);
+            bool actual = DBConnectionHelper.DeleteUser(id);
+            Assert.AreEqual(true, actual);
+            list = DBConnectionHelper.ReadUserRecords();
+            Assert.AreEqual(1, list.Count);
+
+            List<int> buddies = DBConnectionHelper.ReadBuddiesFromUser(id);
+            Assert.AreEqual(0, buddies.Count);
         }
     }
 }
