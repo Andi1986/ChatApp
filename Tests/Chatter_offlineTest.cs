@@ -36,11 +36,11 @@ namespace Tests
         public void JoinTest()
         {
             Chat chat = new Chat();
-            Assert.IsFalse(chat.Chatters.Contains(chatter));
+            Assert.IsFalse(chat.Chatters.Contains(chatter),"chat besitzt chatter");
             chatter.Join(chat);
-            Assert.IsTrue(chat.Chatters.Contains(chatter));
+            Assert.IsTrue(chat.Chatters.Contains(chatter),"chat hat keinen chatter");
             chatter.Leave(chat);
-            Assert.IsFalse(chat.Chatters.Contains(chatter));
+            Assert.IsFalse(chat.Chatters.Contains(chatter),"chat besitzt chatter 2");
         }
 
         //[TestMethod]
