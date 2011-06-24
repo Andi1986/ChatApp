@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
-  <publishProfile publishUrl="C:\ChatServer" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profil1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+  <publishProfile publishUrl="C:\Dropbox\Dropbox\ChatVeroeffentlichung" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profil1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
     <file relUrl="Web.config" publishTime="05/13/2011 13:11:37" />
     <file relUrl="DB/Database_Test.mdb" publishTime="05/13/2011 13:09:05" />
-    <file relUrl="Site.Master" publishTime="05/06/2011 11:44:16" />
+    <file relUrl="Site.Master" publishTime="06/17/2011 11:47:54" />
     <file relUrl="Account/Web.config" publishTime="05/06/2011 11:44:16" />
     <file relUrl="Chat.aspx" publishTime="05/13/2011 13:05:39" />
     <file relUrl="Register.aspx" publishTime="05/06/2011 11:44:16" />
     <file relUrl="Account/Login.aspx" publishTime="05/06/2011 11:44:16" />
     <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="05/06/2011 11:44:16" />
-    <file relUrl="bin/WebApplication1.pdb" publishTime="06/03/2011 15:01:17" />
+    <file relUrl="bin/WebApplication1.pdb" publishTime="06/17/2011 11:49:35" />
     <file relUrl="DB/Database.mdb" publishTime="05/13/2011 13:05:39" />
     <file relUrl="Scripts/jquery-1.4.1.js" publishTime="05/06/2011 11:44:16" />
     <file relUrl="Account/ChangePassword.aspx" publishTime="05/06/2011 11:44:16" />
-    <file relUrl="bin/WebApplication1.dll" publishTime="06/03/2011 15:01:18" />
+    <file relUrl="bin/WebApplication1.dll" publishTime="06/17/2011 11:49:35" />
     <file relUrl="Global.asax" publishTime="05/06/2011 11:44:16" />
     <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="05/06/2011 11:44:16" />
     <file relUrl="About.aspx" publishTime="05/06/2011 11:44:16" />
-    <file relUrl="Styles/Site.css" publishTime="05/06/2011 11:44:16" />
+    <file relUrl="Styles/Site.css" publishTime="06/17/2011 11:47:57" />
     <file relUrl="Default.aspx" publishTime="05/06/2011 11:44:16" />
     <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="05/06/2011 11:44:16" />
     <file relUrl="Account/Register.aspx" publishTime="05/06/2011 11:44:16" />

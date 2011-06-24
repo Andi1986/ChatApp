@@ -41,7 +41,7 @@
             </div>
             <asp:Label ID="ChatRoomNameLabel" runat="server" Text="Label" Font-Bold="True"></asp:Label>
             <br />
-            <div id="ChatText" style="width: 640px; height: 240px; overflow: auto;">
+            <div id="ChatText" style="width: 640px; height: 240px; overflow: hidden;">
                 <WebApplication1:RichTextBulletedList DisplayMode="Text" runat="server" ID="ChatMessageList" />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </div>

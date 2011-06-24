@@ -366,6 +366,5 @@ namespace Tests
             Chat.removeChat(Chat.ActiveChats()[0]);
             Assert.IsTrue(Chat.ActiveChats().Count == 1, "Main room was removed");
         }
-
     }
 }
