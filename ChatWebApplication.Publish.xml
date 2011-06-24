@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
-  <publishProfile publishUrl="C:\Dropbox\Dropbox\ChatVeroeffentlichung" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profil1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+  <publishProfile publishUrl="C:\SoftwareEngineeringII\chatApp\Veröffentlichung" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profil1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
     <file relUrl="Web.config" publishTime="05/13/2011 13:11:37" />
     <file relUrl="DB/Database_Test.mdb" publishTime="05/13/2011 13:09:05" />
     <file relUrl="Site.Master" publishTime="06/17/2011 11:47:54" />
     <file relUrl="Account/Web.config" publishTime="05/06/2011 11:44:16" />
-    <file relUrl="Chat.aspx" publishTime="05/13/2011 13:05:39" />
+    <file relUrl="Chat.aspx" publishTime="06/24/2011 13:54:38" />
     <file relUrl="Register.aspx" publishTime="05/06/2011 11:44:16" />
     <file relUrl="Account/Login.aspx" publishTime="05/06/2011 11:44:16" />
     <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="05/06/2011 11:44:16" />
